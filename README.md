@@ -5,4 +5,5 @@ I improved the project by adding additional checks for different poker hands (th
 
 ## Playing The Game 
 To play the game you need to [download](https://github.com/asathkumara/CSharp-Poker-Game/releases/tag/v1.0) the release, extract it and run the setup.exe file. 
+
 ![image](https://user-images.githubusercontent.com/28933557/51796736-9803fb00-21ac-11e9-8e1e-3a01bac752eb.png)
