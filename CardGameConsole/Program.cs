@@ -22,6 +22,8 @@ namespace CardGameConsole
         /// </summary>
         static void Main(string[] args)
         {
+            Console.Title = "C# Poker Game v1.0";
+
             CardSet myDeck = new CardSet(); 
 
             // Defines the hand size of the player and the computer.
@@ -36,15 +38,8 @@ namespace CardGameConsole
             int computerWinCounter = 0;
             int roundCounter = 0;
             
-
-            // Base Color Scheme
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-
-            Console.Title = "C# Poker Game v1.0";
-
+            ResetConsoleColor();
+         
             Console.WriteLine
             (
                  "Welcome to the Poker Game." +
@@ -86,10 +81,8 @@ namespace CardGameConsole
                 DisplayHands(computerHand, playerHand);
 
                 // Resets console to base color scheme
-                Console.ResetColor();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
-
+                ResetConsoleColor();
+            
                 // Determines whether the player won or lost by calling the CompareHands()
                 bool won = CompareHands(computerHand, playerHand);
 
@@ -305,9 +298,8 @@ namespace CardGameConsole
             }
 
             // Resets console color back to Base
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            ResetConsoleColor();
+            
 
             Console.WriteLine("\nPLAYER HAND");
 
@@ -323,9 +315,8 @@ namespace CardGameConsole
             }
 
             // Resets console color back to base
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            ResetConsoleColor();
+            
 
         } // end of DisplayHands()
 
@@ -592,8 +583,15 @@ namespace CardGameConsole
 
         } // end of CompareHands()     
 
-
-       
+        /// <summary>
+        /// Resets the console color to the game's base scheme.
+        /// </summary>
+       private static void ResetConsoleColor()
+        {
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+        }
 
     } // end of class Program
 
