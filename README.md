@@ -7,3 +7,7 @@ I improved the project by adding and consolidating additional checks for differe
 To play the game you need to [download](https://github.com/asathkumara/CSharp-Poker-Game/releases/download/v1.0/CSharp-Poker-Game-v1.0.zip) the release, extract it and run the setup.exe file. 
 
 ![image](https://user-images.githubusercontent.com/28933557/51796736-9803fb00-21ac-11e9-8e1e-3a01bac752eb.png)
+
+## Documentation
+
+![Chsarp-Poker-Game-Class-Diagram](https://user-images.githubusercontent.com/28933557/54857461-9f331b00-4cbc-11e9-8c6b-64d4e2c5aaa8.JPG)
