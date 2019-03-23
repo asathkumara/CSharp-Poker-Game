@@ -15,7 +15,7 @@ namespace CardGameConsole
     /// <summary>
     /// The class Program contains the calls to the various methods that are used to run the Poker Game.
     /// </summary>
-    class Program
+    class PokerProgram
     {
         /// <summary>
         /// Contains the code for the user interface.
@@ -24,19 +24,7 @@ namespace CardGameConsole
         {
             Console.Title = "C# Poker Game v1.0";
 
-            CardSet myDeck = new CardSet(); 
-
-            // Defines the hand size of the player and the computer.
-            // Going below five cards disables some of the poker hand validations.
-            int howManyCards = 5;
-            
-            // Defines the initial balance the player starts out with.
-            int balance = 10;
-
-            // Statistic counters
-            int playerWinCounter = 0;
-            int computerWinCounter = 0;
-            int roundCounter = 0;
+            NewPokerSession();
             
             ResetConsoleColor();
          
@@ -44,7 +32,7 @@ namespace CardGameConsole
             (
                  "Welcome to the Poker Game." +
                  "\n\nRules:" +
-                $"\n\nYou start with {howManyCards} cards in your hand and a balance of {balance:C}. Each round will be a $1.00 bet." +
+                $"\n\nYou start with {PokerSession.HandSize} cards in your hand and a balance of {PokerSession.Balance:C}. Each round will be a $1.00 bet." +
                  "\n\nBoth players are given the chance to replace one card in their hand if they choose to." +
                  "\n\nBy default, the player with the highest hand value wins. \nBut, a player with a higher valued poker hand wins automatically." +
                  "\n\nThe house wins on all ties including poker hands." +
@@ -55,19 +43,31 @@ namespace CardGameConsole
             Console.ReadKey();
             Console.Clear();
 
-            // Round Loop
-            while (balance != 0)
-            {
-                
+            RunPokerSession();
+                      
+            Console.ReadLine();
+
+        } // end of Main()
+
+        /// <summary>
+        /// Runs the poker session.
+        /// </summary>
+        private static void RunPokerSession()
+        {
+            // Create our deck object
+            CardSet myDeck = new CardSet();
+
+            while (PokerSession.Balance != 0)
+            {               
                 myDeck.ResetUsage();
 
                 // Retrieves the computer and player hands.
-                SuperCard[] computerHand = myDeck.GetCards(howManyCards); 
-                SuperCard[] playerHand = myDeck.GetCards(howManyCards); 
+                SuperCard[] computerHand = myDeck.GetCards(PokerSession.HandSize);
+                SuperCard[] playerHand = myDeck.GetCards(PokerSession.HandSize);
 
                 // Sorts the computer and player hands using the SuperCard's IComparable implementation.
-                Array.Sort(computerHand); 
-                Array.Sort(playerHand); 
+                Array.Sort(computerHand);
+                Array.Sort(playerHand);
 
                 // Display the hands and allow the player / computer to replace one of their cards.
                 DisplayHands(computerHand, playerHand);
@@ -82,84 +82,114 @@ namespace CardGameConsole
 
                 // Resets console to base color scheme
                 ResetConsoleColor();
-            
+
                 // Determines whether the player won or lost by calling the CompareHands()
-                bool won = CompareHands(computerHand, playerHand);
+                bool playerWon = CompareHands(computerHand, playerHand);
 
                 // Player won the hand, Computer lost the hand.
-                if (won == true) 
+                if (playerWon == true)
                 {
 
-                    Console.WriteLine($"\nYou won. \nYou have {++balance:C} left. \nHit Enter for another hand.");
-                    playerWinCounter++;
-                    roundCounter++;
+                    Console.WriteLine
+                    (
+                        $"\nYou won. \nYou have {++PokerSession.Balance:C} left. " +
+                        $"\nHit Enter for another hand."
+                    );
+                    PokerSession.PlayerWinCounter++;
+                    PokerSession.RoundCounter++;
                 }
 
                 // Player lost the hand, Computer won the hand.
-                if (won == false) 
+                if (playerWon == false)
                 {
-                  
-                    Console.WriteLine($"\nYou lost. \nYou have {--balance:C} left. \nHit Enter for another hand.");
-                    computerWinCounter++;
-                    roundCounter++;
+
+                    Console.WriteLine
+                    (
+                        $"\nYou lost. \nYou have {--PokerSession.Balance:C} left. " +
+                        $"\nHit Enter for another hand."
+                    );
+                    PokerSession.ComputerWinCounter++;
+                    PokerSession.RoundCounter++;
                 }
 
-                // Game Over Loop
-                // Lets the player restart, check their score or quit the application.
-                while(balance == 0)
-                {
-                    Console.Clear();
-
-                    Console.WriteLine("You've run out of money.\nPress B to rebuy in at $10, S to see your score or Q to exit.");
-
-                        Decide:
-                        switch (Console.ReadKey().KeyChar)
-                        {
-                            case 'b':
-                                Console.Clear();
-                                balance = 10;
-                                playerWinCounter = 0;
-                                computerWinCounter = 0;
-                                roundCounter = 0;
-                                Console.WriteLine
-                                (
-                                    $"You have replenished your stack and now have {balance:c}." + 
-                                        "\nPress Enter for a new hand."
-                                );
-                                break;
-                            case 'q':
-                                Console.Clear();
-                                Console.WriteLine("Thank you for playing.");
-                                System.Threading.Thread.Sleep(2000);
-                                Environment.Exit(0);
-                                break;
-                            case 's':
-                                Console.Clear();
-                                
-                                Console.WriteLine
-                                (
-                                    $"You won {playerWinCounter} rounds and the computer won {computerWinCounter} rounds out of {roundCounter} rounds." +
-                                    "\nPress B to rebuy in at $10, S to see your score or Q to exit."
-                                );
-                                goto Decide;
-                            default:
-                                Console.Clear();
-                                //Console.Beep();
-                                Console.WriteLine("Not a valid input.\nPress B to rebuy in at $10, S to see your score or Q to exit.");
-                                goto Decide;          
-                        }      
-                   
-                } // end of Game Over Loop
+                TerminatePokerSession();
 
                 Console.ReadLine();
                 Console.Clear();
 
-            } // end of Round Loop 
+            } // end of while (PokerSession.Balance != 0)
+        }
 
-            
-            Console.ReadLine();
+        /// <summary>
+        /// Handles the termination of the session.
+        /// </summary>
+        private static void TerminatePokerSession()
+        {
+            while (PokerSession.Balance == 0)
+            {
+                Console.Clear();
 
-        } // end of Main
+                Console.WriteLine("You've run out of money.\nPress B to rebuy in at $10, S to see your score or Q to exit.");
+
+                do
+                {
+                    switch (Console.ReadKey().KeyChar)
+                    {
+                        case 'b': // Rebuy In
+                            Console.Clear();
+
+                            NewPokerSession();
+
+                            Console.WriteLine
+                            (
+                                $"You have replenished your stack and now have {PokerSession.Balance:c}." +
+                                    "\nPress Enter for a new hand."
+                            );
+                            break;
+
+                        case 'q': // Exit
+                            Console.Clear();
+                            Console.WriteLine("Thank you for playing.");
+                            System.Threading.Thread.Sleep(2000);
+                            Environment.Exit(0);
+                            break;
+
+                        case 's': // Check Score
+                            Console.Clear();
+
+                            Console.WriteLine
+                            (
+                                $"You won {PokerSession.PlayerWinCounter} rounds " +
+                                $"and the computer won {PokerSession.ComputerWinCounter} rounds " +
+                                $"out of {PokerSession.RoundCounter}" +
+                                "\nPress B to rebuy in at $10, S to see your score or Q to exit."
+                            );
+                            break;
+
+                        default: // Invalid
+                            Console.Clear();
+                            Console.WriteLine("Not a valid input.\nPress B to rebuy in at $10, S to see your score or Q to exit.");
+                            break;
+                    }
+
+                } while (PokerSession.Balance == 0);
+
+
+            } // end of while(PokerSession.Balance == 0)
+        }
+
+        /// <summary>
+        /// Initializes the poker session. 
+        /// </summary>
+        private static void NewPokerSession()
+        {
+            PokerSession.Balance = 10;
+            PokerSession.HandSize = 5;
+            PokerSession.PlayerWinCounter = 0;
+            PokerSession.ComputerWinCounter = 0;
+            PokerSession.RoundCounter = 0;
+       
+        }
 
         /// <summary>
         /// Allows the computer to replace a card in their hand if conditions are met.
@@ -265,6 +295,7 @@ namespace CardGameConsole
                 catch (FormatException)
                 {
                     Console.WriteLine("Invalid Input.");
+
                 }
 
                 catch (IndexOutOfRangeException)
@@ -288,11 +319,11 @@ namespace CardGameConsole
             Console.WriteLine("DEALER HAND");
 
             // Loops through cards (and their card classes) stored in pComputerHand[] and displays them. 
-            foreach (SuperCard item in pComputerHand)
+            foreach (SuperCard card in pComputerHand)
             {
-                if (item != null)
+                if (card != null)
                 {
-                    item.Display();
+                    card.Display();
            
                 }
             }
@@ -304,11 +335,11 @@ namespace CardGameConsole
             Console.WriteLine("\nPLAYER HAND");
 
             // Loops through cards (and their card classes) stored in pPlayerHand[] and displays them. 
-            foreach (SuperCard item in pPlayerHand)
+            foreach (SuperCard card in pPlayerHand)
             {
-                if (item != null)
+                if (card != null)
                 {
-                    item.Display();
+                    card.Display();
                     
                 }
  

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CardGameConsole.PokerProgram">
+    <Position X="0.5" Y="0.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>gAAAIEAAAAAAAAAAAAAAAAEIgAAAAABAAAAABAAAAQA=</HashCode>
+      <FileName>PokerProgram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CardGameConsole.PokerSession">
+    <Position X="3.5" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAkAAAEAAAQAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>PokerSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CardLibrary.CardClub">
+    <Position X="11.25" Y="3.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CardLibrary.CardDiamond">
+    <Position X="12.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CardLibrary.CardHeart">
+    <Position X="12.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CardLibrary.CardSet">
+    <Position X="5.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CardLibrary.CardSpade">
+    <Position X="9" Y="3.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CardLibrary.PokerHands">
+    <Position X="0.5" Y="3.25" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CardLibrary.SuperCard">
+    <Position X="9.5" Y="0.5" Width="3" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="CardLibrary.Rank">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="CardLibrary.Suit">
+    <Position X="7.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
