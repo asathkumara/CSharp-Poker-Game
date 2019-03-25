@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGameConsole", "CardGame
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardLibrary", "CardLibrary\CardLibrary.csproj", "{2FC5F0F2-AA87-4788-B5CE-0C4EB71E31CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardLibrary.UnitTests", "CardLibrary.UnitTests\CardLibrary.UnitTests.csproj", "{50B2C0B3-57C1-453F-891C-AF60D1C5CA71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2FC5F0F2-AA87-4788-B5CE-0C4EB71E31CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FC5F0F2-AA87-4788-B5CE-0C4EB71E31CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FC5F0F2-AA87-4788-B5CE-0C4EB71E31CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50B2C0B3-57C1-453F-891C-AF60D1C5CA71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B2C0B3-57C1-453F-891C-AF60D1C5CA71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B2C0B3-57C1-453F-891C-AF60D1C5CA71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B2C0B3-57C1-453F-891C-AF60D1C5CA71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
