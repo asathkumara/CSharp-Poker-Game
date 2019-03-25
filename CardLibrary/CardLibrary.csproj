@@ -45,7 +45,9 @@
     <Compile Include="CardHeart.cs" />
     <Compile Include="CardSet.cs" />
     <Compile Include="CardSpade.cs" />
-    <Compile Include="PokerHands.cs" />
+    <Compile Include="PokerHand.cs" />
+    <Compile Include="PokerHandEvaluator.cs" />
+    <Compile Include="PokerSession.cs" />
     <Compile Include="Rank.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="SuperCard.cs" />

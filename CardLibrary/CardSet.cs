@@ -11,32 +11,25 @@ namespace CardLibrary
     /// </summary>
     public class CardSet
     {
-        /// <summary>
-        /// An instance of the SuperCard class.
-        /// </summary>
-        public SuperCard[] cardArray; 
+        const int DeckSize = 52;
 
-        /// <summary>
-        /// An instance of the Random class.
-        /// </summary>
-        Random myRandom = new Random(); 
-
-       
+        public SuperCard[] cardArray;     
+        
         /// <summary>
         /// The constructor for the class CardSet further defines the size of the deck and populates it with card objects.
         /// </summary>
         public CardSet()
         {
 
-            cardArray = new SuperCard[52]; 
+            cardArray = new SuperCard[DeckSize];
 
-            // Iterator
-            int i = 0; 
+
+            int i = 0;
 
             // This for loop increments the underlying value of Rank.Deuce (that is, 2).
             for (Rank r = Rank.Deuce; r <= Rank.Ace; r++) 
             {
-
+                
                 cardArray[i++] = new CardClub(r);
 
                 cardArray[i++] = new CardDiamond(r);
@@ -45,6 +38,8 @@ namespace CardLibrary
 
                 cardArray[i++] = new CardSpade(r);
             }
+
+            ShuffleDeck();
 
             #region Alternative Foreach Loop
             //foreach (Rank r in Enum.GetValues(typeof(Rank))) // Increments the underlying value of Rank
@@ -94,11 +89,31 @@ namespace CardLibrary
 
         } // end of constructor CardSet()
 
+        /// <summary>
+        /// Shuffles the deck 1000 times.
+        /// </summary>
+        private void ShuffleDeck()
+        {
+            Random myRandom = new Random();
+            SuperCard card = null;
+            for (int i = 0; i < 1000; i++)
+            {
+                for (int j = 0; j < DeckSize; j++)
+                {
+                    int secondCardIndex = myRandom.Next(13);
+                    card = cardArray[j];
+                    cardArray[j] = cardArray[secondCardIndex];
+                    cardArray[secondCardIndex] = card;
+                }
+            }
+        }
+
 
         /// <summary> 
         /// Retrieves a random collection of card objects, which are stored in the cardArray[] of type SuperCard, that are not inplay.
         /// </summary>
         /// <param name="pHowManyCards">Defines the size of the dealCards array of type SuperCard.</param>
+        /// <returns>Returns the dealCards array which is of type SuperCard.</returns>
         public SuperCard[] GetCards(int pHowManyCards)
         {
             SuperCard[] dealCards = new SuperCard[pHowManyCards];
@@ -147,12 +162,13 @@ namespace CardLibrary
 
 
         /// <summary>
-        /// Retrieves one card, that is not inplay, from the deck of 52 cards
+        /// Retrieves one card that is not inplay from the card deck.
         /// </summary>
         /// <returns>Returns oneCard which is an object of type SuperCard</returns>
         public SuperCard GetOneCard()
         {
             SuperCard oneCard = null;
+            Random myRandom = new Random();
 
             for (int i = 0; i < cardArray.Length; i++)
             {

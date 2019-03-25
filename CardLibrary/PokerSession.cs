@@ -9,7 +9,7 @@ namespace CardGameConsole
     /// <summary>
     /// Initiaizes the poker session with default properties.
     /// </summary>
-     static class PokerSession
+    public static class PokerSession
     {
         /// <summary>
         /// Defines the player's balance.

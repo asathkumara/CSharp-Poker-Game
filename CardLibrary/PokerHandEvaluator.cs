@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace CardLibrary
 {
     /// <summary>
-    /// Contains the evaluations for the various poker hands.
+    /// Contains the evaluations for the various types of hands.
     /// </summary>
     /// <remarks>
     /// The code for most of these hand validations was inspired by their Java equivalents at http://www.mathcs.emory.edu/~cheung/Courses/170/Syllabus/10/pokerCheck.html 
     /// While the code is similar, the implementation is very different due to the constraints of the assignment and the C# language.
     /// </remarks>
-    public class PokerHands
+    public class PokerHandEvaluator
     {
         /// <summary>
         /// Checks for the flush hand.
@@ -368,9 +368,79 @@ namespace CardLibrary
 
         } // end of TwoPair()
 
+        /// <summary>
+        /// Evaluates the rarity of the hand, returning a PokerHand enum that matches that rarity.
+        /// </summary>
+        /// <param name="pHand">The player or computer hand.</param>
+        /// <returns>Returns a PokerHand enum that matches the rarity of the hand.</returns>
+        public static PokerHand EvaluatePokerHand(SuperCard[] pHand)
+        {
+            if (RoyalFlush(pHand))
+            {
+                return PokerHand.RoyalFlush;
+            }
 
+            if (StraightFlush(pHand))
+            {
+                return PokerHand.StraightFlush;
+            }
 
+            if (FullHouse(pHand))
+            {
+                return PokerHand.FullHouse;
+            }
 
+            if (Flush(pHand))
+            {
+                return PokerHand.Flush;
+            }
 
+            if (Straight(pHand))
+            {
+                return PokerHand.Straight;
+            }
+
+            if (FourOfAKind(pHand))
+            {
+                return PokerHand.FourOfAKind;
+            }
+
+            if (ThreeOfAKind(pHand))
+            {
+                return PokerHand.ThreeOfAKind;
+            }
+
+            if (TwoPair(pHand))
+            {
+                return PokerHand.TwoPair;
+            }
+
+            if (OnePair(pHand))
+            {
+                return PokerHand.OnePair;
+            }
+
+            else
+            {
+                return PokerHand.NotPokerHand;
+            }
+        }
+
+        /// <summary>
+        /// Evaluates the underlying value of each Rank enum in the hand.
+        /// </summary>
+        /// <param name="pHand">The player or computer hand.</param>
+        /// <returns>Returns handValue which is an int. </returns>
+        public static int EvaluateHandValue(SuperCard[] pHand)
+        {
+            int handValue = 0;
+
+            foreach (SuperCard card in pHand)
+            {
+                handValue += (int)card.CardRank;
+            }
+
+            return handValue;
+        }
     }
 }
