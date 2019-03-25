@@ -76,7 +76,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="CardGameConsole_TemporaryKey.pfx" />
-    <None Include="PokerDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CardLibrary\CardLibrary.csproj">
