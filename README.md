@@ -1,7 +1,7 @@
 # CSharp-Poker-Game
 This poker game was a final project for my object-oriented programming course. It is a simple .NET framework console application that makes use of enums and interfaces.
 
-I improved the project by adding and consolidating additional checks for different poker hands (the original project only checked for flushes). I also improved the code for sorting using lambda expressions as the original project sorted by suit and then by rank.
+I improved the original project by adding and consolidating additional checks for different poker hands (the original project only checked for flushes). I also improved the underlying structure of the code and incorporated some unit tests. I'm still working on additional refactorings.
 
 ## Playing The Game 
 To play the game you need to [download](https://github.com/asathkumara/CSharp-Poker-Game/releases/download/v1.0/CSharp-Poker-Game-v1.0.zip) the release, extract it and run the setup.exe file. 
@@ -10,5 +10,6 @@ To play the game you need to [download](https://github.com/asathkumara/CSharp-Po
 
 ## Documentation
 
-![Chsarp-Poker-Game-Class-Diagram2](https://user-images.githubusercontent.com/28933557/54863143-0c1cd400-4d02-11e9-85cd-a47aa88e3051.JPG)
+![Chsarp-Poker-Game-Class-Diagram3](https://user-images.githubusercontent.com/28933557/54904167-f858a580-4e9a-11e9-83fe-e70871dfc7bc.JPG)
+
 
