@@ -10,4 +10,5 @@ To play the game you need to [download](https://github.com/asathkumara/CSharp-Po
 
 ## Documentation
 
-![Chsarp-Poker-Game-Class-Diagram](https://user-images.githubusercontent.com/28933557/54857461-9f331b00-4cbc-11e9-8c6b-64d4e2c5aaa8.JPG)
+![Chsarp-Poker-Game-Class-Diagram2](https://user-images.githubusercontent.com/28933557/54863143-0c1cd400-4d02-11e9-85cd-a47aa88e3051.JPG)
+
