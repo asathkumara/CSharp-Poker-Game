@@ -86,11 +86,11 @@ namespace CardLibrary
 
                     Console.WriteLine
                     (
-                        $"\nYou won. \nYou have {++PokerSession.Balance:C} left. " +
+                        $"\nYou won. \nYou have {++Balance:C} left. " +
                         $"\nHit Enter for another hand."
                     );
-                    PokerSession.PlayerWinCounter++;
-                    PokerSession.RoundCounter++;
+                    PlayerWinCounter++;
+                    RoundCounter++;
                 }
 
                 // Player lost the hand, Computer won the hand.
@@ -99,11 +99,11 @@ namespace CardLibrary
 
                     Console.WriteLine
                     (
-                        $"\nYou lost. \nYou have {--PokerSession.Balance:C} left. " +
+                        $"\nYou lost. \nYou have {--Balance:C} left. " +
                         $"\nHit Enter for another hand."
                     );
-                    PokerSession.ComputerWinCounter++;
-                    PokerSession.RoundCounter++;
+                    ComputerWinCounter++;
+                    RoundCounter++;
                 }
 
                 TerminatePokerSession();
@@ -220,7 +220,6 @@ namespace CardLibrary
 
 
         }
-
 
         /// <summary>
         /// Allows the player to replace a card in their hand.
