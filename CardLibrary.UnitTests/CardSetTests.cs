@@ -9,35 +9,21 @@ namespace CardLibrary.UnitTests
         [Test]
         public void CardSet_ValidateDeck_ReturnsTrue()
         {
-            SuperCard[] testDeck = new SuperCard[52];
+            CardSet testDeck = new CardSet();
 
-            int i = 0;
-
-            for (Rank r = Rank.Deuce; r <= Rank.Ace; r++)
-            {
-
-                testDeck[i++] = new CardClub(r);
-
-                testDeck[i++] = new CardDiamond(r);
-
-                testDeck[i++] = new CardHeart(r);
-
-                testDeck[i++] = new CardSpade(r);
-            }
-
-            var totalClubCards = (from card in testDeck
+            var totalClubCards = (from card in testDeck.cardArray
                                   where card.CardSuit == Suit.Club
                                   select card).Count();
 
-            var totalDiamondCards = (from card in testDeck
+            var totalDiamondCards = (from card in testDeck.cardArray
                                   where card.CardSuit == Suit.Diamond
                                   select card).Count();
 
-            var totalHeartCards = (from card in testDeck
+            var totalHeartCards = (from card in testDeck.cardArray
                                   where card.CardSuit == Suit.Heart
                                   select card).Count();
 
-            var totalSpadeCards = (from card in testDeck
+            var totalSpadeCards = (from card in testDeck.cardArray
                                   where card.CardSuit == Suit.Spade
                                   select card).Count();
 
