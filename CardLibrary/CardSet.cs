@@ -9,11 +9,11 @@ namespace CardLibrary
     /// <summary>
     /// The CardSet class deals with the deck's definition and implementation.
     /// </summary>
-    public class CardSet
+    public class CardSet /*: Card*/
     {
         const int DeckSize = 52;
 
-        public SuperCard[] cardArray;     
+        public Card[] cardArray;     
         
         /// <summary>
         /// The constructor for the class CardSet further defines the size of the deck and populates it with card objects.
@@ -21,22 +21,30 @@ namespace CardLibrary
         public CardSet()
         {
 
-            cardArray = new SuperCard[DeckSize];
+            cardArray = new Card[DeckSize];
 
 
             int i = 0;
 
             // This for loop increments the underlying value of Rank.Deuce (that is, 2).
-            for (Rank r = Rank.Deuce; r <= Rank.Ace; r++) 
+            //for (Rank r = Rank.Deuce; r <= Rank.Ace; r++) 
+            //{
+
+            //    cardArray[i++] = new CardClub(r);
+
+            //    cardArray[i++] = new CardDiamond(r);
+
+            //    cardArray[i++] = new CardHeart(r);
+
+            //    cardArray[i++] = new CardSpade(r);
+            //}
+            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             {
-                
-                cardArray[i++] = new CardClub(r);
-
-                cardArray[i++] = new CardDiamond(r);
-
-                cardArray[i++] = new CardHeart(r);
-
-                cardArray[i++] = new CardSpade(r);
+                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+                {
+                    cardArray[i] = new Card( suit, rank );
+                    i++;
+                }
             }
 
             ShuffleDeck();
@@ -95,7 +103,7 @@ namespace CardLibrary
         private void ShuffleDeck()
         {
             Random myRandom = new Random();
-            SuperCard card = null;
+            Card card = null;
             for (int i = 0; i < 1000; i++)
             {
                 for (int j = 0; j < DeckSize; j++)
@@ -114,9 +122,9 @@ namespace CardLibrary
         /// </summary>
         /// <param name="pHowManyCards">Defines the size of the dealCards array of type SuperCard.</param>
         /// <returns>Returns the dealCards array which is of type SuperCard.</returns>
-        public SuperCard[] GetCards(int pHowManyCards)
+        public Card[] GetCards(int pHowManyCards)
         {
-            SuperCard[] dealCards = new SuperCard[pHowManyCards];
+            Card[] dealCards = new Card[pHowManyCards];
             
             for (int i = 0; i < dealCards.Length; i++)
             {
@@ -165,9 +173,9 @@ namespace CardLibrary
         /// Retrieves one card that is not inplay from the card deck.
         /// </summary>
         /// <returns>Returns oneCard which is an object of type SuperCard</returns>
-        public SuperCard GetOneCard()
+        public Card GetOneCard()
         {
-            SuperCard oneCard = null;
+            Card oneCard = null;
             Random myRandom = new Random();
 
             for (int i = 0; i < cardArray.Length; i++)

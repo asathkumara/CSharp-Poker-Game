@@ -21,7 +21,7 @@ namespace CardLibrary
         /// <remarks>A flush hand is 5 cards of the same suit.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a bool variable isFlush that is true if there is a flush and a false if there isn't one.</returns>
-        public static bool Flush(SuperCard[] pHand)
+        public static bool Flush(Card[] pHand)
         {
             bool isFlush = false;
 
@@ -49,7 +49,7 @@ namespace CardLibrary
         /// <remarks>A straight hand is 5 cards of sequential rank.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns></returns>
-        public static bool Straight(SuperCard[] pHand)
+        public static bool Straight(Card[] pHand)
         {
             bool isStraight = true;
 
@@ -87,7 +87,7 @@ namespace CardLibrary
         /// <remarks>A straight flush hand is a 5 cards of the same suit in sequential rank.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a bool isStraightFlush that is true if Straight() and Flush() return true.</returns>
-        public static bool StraightFlush(SuperCard[] pHand)
+        public static bool StraightFlush(Card[] pHand)
         {
             bool isStraightFlush = false;
 
@@ -108,7 +108,7 @@ namespace CardLibrary
         /// <remarks>A royal flush hand is the highest straight flush with a high ace.</remarks>
         /// <param name="pHand">The player or computer hand</param>
         /// <returns>Returns a bool variable isFlush that is true if Straight() and Flush() returns true, and if there's an high Ace</returns>
-        public static bool RoyalFlush(SuperCard[] pHand)
+        public static bool RoyalFlush(Card[] pHand)
         {
             bool isRoyalFlush = false;
 
@@ -135,7 +135,7 @@ namespace CardLibrary
         /// <remarks>A full house hand has 3 cards of the same rank and 2 other cards of the same rank.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a bool isFullHouse if it finds 3 cards of the same rank and 2 other cards of same rank in the hand.</returns>
-        public static bool FullHouse(SuperCard[] pHand)
+        public static bool FullHouse(Card[] pHand)
         {
             bool isFullHouse = false;
 
@@ -177,7 +177,7 @@ namespace CardLibrary
         /// <remarks>A four of a kind hand has 4 cards of the same rank and a 5th card of any rank.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a bool isFourOfAKind that is true if it finds a four of a kind anywhere in the hand.</returns>
-        public static bool FourOfAKind(SuperCard[] pHand)
+        public static bool FourOfAKind(Card[] pHand)
         {
             bool isFourOfAKind = false;
 
@@ -219,7 +219,7 @@ namespace CardLibrary
         /// <remarks>A three of a kind hand has 3 cards of the same rank and 2 cards of any rank.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a bool isThreeOfAKind that is true if it finds a three of a kind anywhere in the hand.</returns>
-        public static bool ThreeOfAKind(SuperCard[] pHand)
+        public static bool ThreeOfAKind(Card[] pHand)
         {
             bool isThreeOfAKind = false;
 
@@ -269,7 +269,7 @@ namespace CardLibrary
         /// <remarks>A two pair hand has two cards of the same rank, two different cards of the same rank and one unmatched card.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a bool isTwoPair that is true if it finds two pairs anywhere in the hand.</returns>
-        public static bool TwoPair(SuperCard[] pHand)
+        public static bool TwoPair(Card[] pHand)
         {
             bool isTwoPair = false;
 
@@ -319,7 +319,7 @@ namespace CardLibrary
         /// <remarks>A one pair hand has two cards of the same rank and three other unmatched cards.</remarks>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a bool isOnePair that is true if it finds a one pair anywhere in the hand.</returns>
-        public static bool OnePair(SuperCard[] pHand)
+        public static bool OnePair(Card[] pHand)
         {
             bool isOnePair = false;
 
@@ -373,7 +373,7 @@ namespace CardLibrary
         /// </summary>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns a PokerHand enum that matches the rarity of the hand.</returns>
-        public static PokerHand EvaluatePokerHand(SuperCard[] pHand)
+        public static PokerHand EvaluatePokerHand(Card[] pHand)
         {
             if (RoyalFlush(pHand))
             {
@@ -431,11 +431,11 @@ namespace CardLibrary
         /// </summary>
         /// <param name="pHand">The player or computer hand.</param>
         /// <returns>Returns handValue which is an int. </returns>
-        public static int EvaluateHandValue(SuperCard[] pHand)
+        public static int EvaluateHandValue(Card[] pHand)
         {
             int handValue = 0;
 
-            foreach (SuperCard card in pHand)
+            foreach (Card card in pHand)
             {
                 handValue += (int)card.CardRank;
             }

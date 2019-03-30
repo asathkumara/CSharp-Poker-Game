@@ -40,17 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardClub.cs" />
-    <Compile Include="CardDiamond.cs" />
-    <Compile Include="CardHeart.cs" />
     <Compile Include="CardSet.cs" />
-    <Compile Include="CardSpade.cs" />
     <Compile Include="PokerHand.cs" />
     <Compile Include="PokerHandEvaluator.cs" />
     <Compile Include="PokerSession.cs" />
     <Compile Include="Rank.cs" />
     <Compile Include="Suit.cs" />
-    <Compile Include="SuperCard.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -74,11 +74,11 @@ namespace CardLibrary.UnitTests
         {
             CardSet testdeck = GetTestDeck();
 
-            SuperCard[] testHand = testdeck.GetCards(5);
+            Card[] testHand = testdeck.GetCards(5);
 
             bool result = false;
 
-            foreach (SuperCard card in testHand)
+            foreach (Card card in testHand)
             {
                 if (card.Inplay == true)
                 {

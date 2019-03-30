@@ -13,457 +13,457 @@ namespace CardLibrary.UnitTests
         /// </summary>
         /// <param name="pPokerHand">The type of poker hand.</param>
         /// <returns>A SuperCard array that is initialized with cards matching the poker hand conditions.</returns>
-        static IEnumerable<SuperCard[]> GetTestHand(PokerHand pPokerHand)
+        static IEnumerable<Card[]> GetTestHand(PokerHand pPokerHand)
         {
             if (pPokerHand == PokerHand.Flush)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Deuce),
-                    new CardClub(Rank.Jack),
-                    new CardClub(Rank.Ten),
-                    new CardClub(Rank.Three),
-                    new CardClub(Rank.Nine)
+                    new Card(Suit.Club, Rank.Deuce),
+                    new Card(Suit.Club, Rank.Jack),
+                    new Card(Suit.Club, Rank.Ten),
+                    new Card(Suit.Club, Rank.Three),
+                    new Card(Suit.Club, Rank.Nine)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardDiamond(Rank.Ace),
-                    new CardDiamond(Rank.Three),
-                    new CardDiamond(Rank.Four),
-                    new CardDiamond(Rank.Five),
-                    new CardDiamond(Rank.Six)
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Three),
+                    new Card(Suit.Diamond, Rank.Four),
+                    new Card(Suit.Diamond, Rank.Five),
+                    new Card(Suit.Diamond, Rank.Six)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardSpade(Rank.Ace),
-                    new CardSpade(Rank.Three),
-                    new CardSpade(Rank.Four),
-                    new CardSpade(Rank.Five),
-                    new CardSpade(Rank.Six)
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Three),
+                    new Card(Suit.Spade, Rank.Four),
+                    new Card(Suit.Spade, Rank.Five),
+                    new Card(Suit.Spade, Rank.Six)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardHeart(Rank.Ace),
-                    new CardHeart(Rank.Three),
-                    new CardHeart(Rank.Four),
-                    new CardHeart(Rank.Five),
-                    new CardHeart(Rank.Six)
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Three),
+                    new Card(Suit.Heart, Rank.Four),
+                    new Card(Suit.Heart, Rank.Five),
+                    new Card(Suit.Heart, Rank.Six)
                 };
             }
 
             if (pPokerHand == PokerHand.Straight)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Deuce),
-                    new CardDiamond(Rank.Three),
-                    new CardSpade(Rank.Four),
-                    new CardHeart(Rank.Five),
-                    new CardClub(Rank.Six)
+                    new Card(Suit.Club, Rank.Deuce),
+                    new Card(Suit.Diamond, Rank.Three),
+                    new Card(Suit.Spade, Rank.Four),
+                    new Card(Suit.Heart, Rank.Five),
+                    new Card(Suit.Club, Rank.Six)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Three),
-                    new CardDiamond(Rank.Four),
-                    new CardSpade(Rank.Five),
-                    new CardHeart(Rank.Six),
-                    new CardClub(Rank.Seven)
+                    new Card(Suit.Club, Rank.Three),
+                    new Card(Suit.Diamond, Rank.Four),
+                    new Card(Suit.Spade, Rank.Five),
+                    new Card(Suit.Heart, Rank.Six),
+                    new Card(Suit.Club, Rank.Seven)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Four),
-                    new CardDiamond(Rank.Five),
-                    new CardSpade(Rank.Six),
-                    new CardHeart(Rank.Seven),
-                    new CardClub(Rank.Eight)
+                    new Card(Suit.Club, Rank.Four),
+                    new Card(Suit.Diamond, Rank.Five),
+                    new Card(Suit.Spade, Rank.Six),
+                    new Card(Suit.Heart, Rank.Seven),
+                    new Card(Suit.Club, Rank.Eight)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardDiamond(Rank.Six),
-                    new CardSpade(Rank.Seven),
-                    new CardHeart(Rank.Eight),
-                    new CardClub(Rank.Nine)
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Diamond, Rank.Six),
+                    new Card(Suit.Spade, Rank.Seven),
+                    new Card(Suit.Heart, Rank.Eight),
+                    new Card(Suit.Club, Rank.Nine)
                 };
             }
 
             if (pPokerHand == PokerHand.StraightFlush)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Deuce),
-                    new CardClub(Rank.Three),
-                    new CardClub(Rank.Four),
-                    new CardClub(Rank.Five),
-                    new CardClub(Rank.Six)
+                    new Card(Suit.Club, Rank.Deuce),
+                    new Card(Suit.Club, Rank.Three),
+                    new Card(Suit.Club, Rank.Four),
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Club, Rank.Six)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardDiamond(Rank.Three),
-                    new CardDiamond(Rank.Four),
-                    new CardDiamond(Rank.Five),
-                    new CardDiamond(Rank.Six),
-                    new CardDiamond(Rank.Seven)
+                    new Card(Suit.Diamond, Rank.Three),
+                    new Card(Suit.Diamond, Rank.Four),
+                    new Card(Suit.Diamond, Rank.Five),
+                    new Card(Suit.Diamond, Rank.Six),
+                    new Card(Suit.Diamond, Rank.Seven)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardSpade(Rank.Four),
-                    new CardSpade(Rank.Five),
-                    new CardSpade(Rank.Six),
-                    new CardSpade(Rank.Seven),
-                    new CardSpade(Rank.Eight)
+                    new Card(Suit.Spade, Rank.Four),
+                    new Card(Suit.Spade, Rank.Five),
+                    new Card(Suit.Spade, Rank.Six),
+                    new Card(Suit.Spade, Rank.Seven),
+                    new Card(Suit.Spade, Rank.Eight)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardHeart(Rank.Five),
-                    new CardHeart(Rank.Six),
-                    new CardHeart(Rank.Seven),
-                    new CardHeart(Rank.Eight),
-                    new CardHeart(Rank.Nine)
+                    new Card(Suit.Heart, Rank.Five),
+                    new Card(Suit.Heart, Rank.Six),
+                    new Card(Suit.Heart, Rank.Seven),
+                    new Card(Suit.Heart, Rank.Eight),
+                    new Card(Suit.Heart, Rank.Nine)
                 };
             }
 
             if (pPokerHand == PokerHand.RoyalFlush)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Ten),
-                    new CardClub(Rank.Jack),
-                    new CardClub(Rank.Queen),
-                    new CardClub(Rank.King),
-                    new CardClub(Rank.Ace)
+                    new Card(Suit.Club, Rank.Ten),
+                    new Card(Suit.Club, Rank.Jack),
+                    new Card(Suit.Club, Rank.Queen),
+                    new Card(Suit.Club, Rank.King),
+                    new Card(Suit.Club, Rank.Ace)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardDiamond(Rank.Ten),
-                    new CardDiamond(Rank.Jack),
-                    new CardDiamond(Rank.Queen),
-                    new CardDiamond(Rank.King),
-                    new CardDiamond(Rank.Ace)
+                    new Card(Suit.Diamond,Rank.Ten),
+                    new Card(Suit.Diamond, Rank.Jack),
+                    new Card(Suit.Diamond, Rank.Queen),
+                    new Card(Suit.Diamond, Rank.King),
+                    new Card(Suit.Diamond, Rank.Ace)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardHeart(Rank.Ten),
-                    new CardHeart(Rank.Jack),
-                    new CardHeart(Rank.Queen),
-                    new CardHeart(Rank.King),
-                    new CardHeart(Rank.Ace)
+                    new Card(Suit.Heart, Rank.Ten),
+                    new Card(Suit.Heart, Rank.Jack),
+                    new Card(Suit.Heart, Rank.Queen),
+                    new Card(Suit.Heart, Rank.King),
+                    new Card(Suit.Heart, Rank.Ace)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardSpade(Rank.Ten),
-                    new CardSpade(Rank.Jack),
-                    new CardSpade(Rank.Queen),
-                    new CardSpade(Rank.King),
-                    new CardSpade(Rank.Ace)
+                    new Card(Suit.Spade, Rank.Ten),
+                    new Card(Suit.Spade, Rank.Jack),
+                    new Card(Suit.Spade, Rank.Queen),
+                    new Card(Suit.Spade, Rank.King),
+                    new Card(Suit.Spade, Rank.Ace)
                 };
             }
 
             if (pPokerHand == PokerHand.FullHouse)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.King),
-                    new CardSpade(Rank.King),
-                    new CardDiamond(Rank.King),
-                    new CardHeart(Rank.Three),
-                    new CardClub(Rank.Three)
+                    new Card(Suit.Club, Rank.King),
+                    new Card(Suit.Spade, Rank.King),
+                    new Card(Suit.Diamond, Rank.King),
+                    new Card(Suit.Heart, Rank.Three),
+                    new Card(Suit.Club, Rank.Three)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Deuce),
-                    new CardSpade(Rank.Deuce),
-                    new CardDiamond(Rank.Deuce),
-                    new CardHeart(Rank.Ace),
-                    new CardClub(Rank.Ace)
+                    new Card(Suit.Club, Rank.Deuce),
+                    new Card(Suit.Spade, Rank.Deuce),
+                    new Card(Suit.Diamond, Rank.Deuce),
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Club, Rank.Ace)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Four),
-                    new CardSpade(Rank.Four),
-                    new CardDiamond(Rank.Ten),
-                    new CardHeart(Rank.Ten),
-                    new CardClub(Rank.Ten)
+                    new Card(Suit.Club, Rank.Four),
+                    new Card(Suit.Spade, Rank.Four),
+                    new Card(Suit.Diamond, Rank.Ten),
+                    new Card(Suit.Heart, Rank.Ten),
+                    new Card(Suit.Club, Rank.Ten)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardSpade(Rank.Five),
-                    new CardDiamond(Rank.Seven),
-                    new CardHeart(Rank.Seven),
-                    new CardClub(Rank.Seven)
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Spade, Rank.Five),
+                    new Card(Suit.Diamond, Rank.Seven),
+                    new Card(Suit.Heart, Rank.Seven),
+                    new Card(Suit.Club, Rank.Seven)
                 };
             }
 
             if (pPokerHand == PokerHand.FourOfAKind)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Ace),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Ace),
-                    new CardClub(Rank.Three)
+                    new Card(Suit.Club, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Club, Rank.Three)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Jack),
-                    new CardSpade(Rank.Jack),
-                    new CardDiamond(Rank.Jack),
-                    new CardHeart(Rank.Jack),
-                    new CardClub(Rank.Deuce)
+                    new Card(Suit.Club, Rank.Jack),
+                    new Card(Suit.Spade, Rank.Jack),
+                    new Card(Suit.Diamond, Rank.Jack),
+                    new Card(Suit.Heart, Rank.Jack),
+                    new Card(Suit.Club, Rank.Deuce)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardSpade(Rank.Ten),
-                    new CardDiamond(Rank.Ten),
-                    new CardHeart(Rank.Ten),
-                    new CardClub(Rank.Ten)
+                    new Card(Suit.Club, Rank.Ten),
+                    new Card(Suit.Spade, Rank.Ten),
+                    new Card(Suit.Diamond, Rank.Five),
+                    new Card(Suit.Heart, Rank.Ten),
+                    new Card(Suit.Club, Rank.Ten)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                {
-                    new CardClub(Rank.King),
-                    new CardSpade(Rank.Queen),
-                    new CardDiamond(Rank.Queen),
-                    new CardHeart(Rank.Queen),
-                    new CardClub(Rank.Queen)
+                    new Card(Suit.Club, Rank.King),
+                    new Card(Suit.Spade, Rank.Queen),
+                    new Card(Suit.Diamond, Rank.Queen),
+                    new Card(Suit.Heart, Rank.Queen),
+                    new Card(Suit.Club, Rank.Queen)
                };
             }
 
             if (pPokerHand == PokerHand.ThreeOfAKind)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {          
-                    new CardClub(Rank.Ace),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Deuce),
-                    new CardClub(Rank.Three)
+                    new Card(Suit.Club, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Deuce),
+                    new Card(Suit.Club, Rank.Three)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Ace),
-                    new CardClub(Rank.Jack)
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Club, Rank.Jack)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardSpade(Rank.Ten),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Ace),
-                    new CardClub(Rank.Ace)
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Spade, Rank.Ten),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Club, Rank.Ace)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Ace),
-                    new CardSpade(Rank.Queen),
-                    new CardDiamond(Rank.King),
-                    new CardHeart(Rank.Ace),
-                    new CardClub(Rank.Ace)
+                    new Card(Suit.Club, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Queen),
+                    new Card(Suit.Diamond, Rank.King),
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Club, Rank.Ace)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Ace),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Eight),
-                    new CardHeart(Rank.Nine),
-                    new CardClub(Rank.Ace)
+                    new Card(Suit.Club, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Eight),
+                    new Card(Suit.Heart, Rank.Nine),
+                    new Card(Suit.Club, Rank.Ace)
                 };
             }
 
             if (pPokerHand == PokerHand.TwoPair)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Ace),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Three),
-                    new CardHeart(Rank.Three),
-                    new CardClub(Rank.Eight)
+                    new Card(Suit.Club, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Three),
+                    new Card(Suit.Heart, Rank.Three),
+                    new Card(Suit.Club, Rank.Eight)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Nine),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Five),
-                    new CardClub(Rank.Five)
+                    new Card(Suit.Club, Rank.Nine),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Five),
+                    new Card(Suit.Club, Rank.Five)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Ace),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Queen),
-                    new CardHeart(Rank.King),
-                    new CardClub(Rank.King)
+                    new Card(Suit.Club, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Queen),
+                    new Card(Suit.Heart, Rank.King),
+                    new Card(Suit.Club, Rank.King)
                 };
             }
 
             if (pPokerHand == PokerHand.OnePair)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Ace),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Five),
-                    new CardHeart(Rank.Jack),
-                    new CardClub(Rank.Three)
+                    new Card(Suit.Club, Rank.Ace),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Five),
+                    new Card(Suit.Heart, Rank.Jack),
+                    new Card(Suit.Club, Rank.Three)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Jack),
-                    new CardClub(Rank.Three)
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Jack),
+                    new Card(Suit.Club, Rank.Three)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardSpade(Rank.Six),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Ace),
-                    new CardClub(Rank.Three)
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Spade, Rank.Six),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Club, Rank.Three)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Five),
-                    new CardSpade(Rank.Deuce),
-                    new CardDiamond(Rank.Three),
-                    new CardHeart(Rank.Ace),
-                    new CardClub(Rank.Ace)
+                    new Card(Suit.Club, Rank.Five),
+                    new Card(Suit.Spade, Rank.Deuce),
+                    new Card(Suit.Diamond, Rank.Three),
+                    new Card(Suit.Heart, Rank.Ace),
+                    new Card(Suit.Club, Rank.Ace)
                 };
             }
 
             if (pPokerHand == PokerHand.NotPokerHand)
             {
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Deuce),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Eight),
-                    new CardHeart(Rank.Five),
-                    new CardClub(Rank.Six)
+                    new Card(Suit.Club, Rank.Deuce),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Eight),
+                    new Card(Suit.Heart, Rank.Five),
+                    new Card(Suit.Club, Rank.Six)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Three),
-                    new CardSpade(Rank.Eight),
-                    new CardDiamond(Rank.Ace),
-                    new CardHeart(Rank.Five),
-                    new CardClub(Rank.Six)
+                    new Card(Suit.Club, Rank.Three),
+                    new Card(Suit.Spade, Rank.Eight),
+                    new Card(Suit.Diamond, Rank.Ace),
+                    new Card(Suit.Heart, Rank.Five),
+                    new Card(Suit.Club, Rank.Six)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Deuce),
-                    new CardSpade(Rank.Ace),
-                    new CardDiamond(Rank.Jack),
-                    new CardHeart(Rank.Five),
-                    new CardClub(Rank.Six)
+                    new Card(Suit.Club, Rank.Deuce),
+                    new Card(Suit.Spade, Rank.Ace),
+                    new Card(Suit.Diamond, Rank.Jack),
+                    new Card(Suit.Heart, Rank.Five),
+                    new Card(Suit.Club, Rank.Six)
                 };
 
-                yield return new SuperCard[]
+                yield return new Card[]
                 {
-                    new CardClub(Rank.Deuce),
-                    new CardSpade(Rank.Queen),
-                    new CardDiamond(Rank.Jack),
-                    new CardHeart(Rank.King),
-                    new CardClub(Rank.Four)
+                    new Card(Suit.Club, Rank.Deuce),
+                    new Card(Suit.Spade, Rank.Queen),
+                    new Card(Suit.Diamond, Rank.Jack),
+                    new Card(Suit.Heart, Rank.King),
+                    new Card(Suit.Club, Rank.Four)
                 };
             }
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Flush })]
-        public void Flush_IsFlush_ReturnsTrue(SuperCard[] pTestHand)
+        public void Flush_IsFlush_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.Flush(pTestHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Straight })]
-        public void Straight_IsStraight_ReturnsTrue(SuperCard[] pTestHand)
+        public void Straight_IsStraight_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.Straight(pTestHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.StraightFlush })]
-        public void StraightFlush_IsStraightFlush_ReturnsTrue(SuperCard[] pTestHand)
+        public void StraightFlush_IsStraightFlush_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.StraightFlush(pTestHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.RoyalFlush })]
-        public void RoyalFlush_IsRoyalFlush_ReturnsTrue(SuperCard[] pTestHand)
+        public void RoyalFlush_IsRoyalFlush_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.RoyalFlush(pTestHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FullHouse })]
-        public void FullHouse_IsFullHouse_ReturnsTrue(SuperCard[] pTestHand)
+        public void FullHouse_IsFullHouse_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.FullHouse(pTestHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
-        public void FourOfAKind_IsFourOfAKind_ReturnsTrue(SuperCard[] pTestHand)
+        public void FourOfAKind_IsFourOfAKind_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.FourOfAKind(pTestHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
-        public void ThreeOfAKind_IsThreeOfAKind_ReturnsTrue(SuperCard[] pTestHand)
+        public void ThreeOfAKind_IsThreeOfAKind_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.ThreeOfAKind(pTestHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
-        public void ThreeOfAKind_IsBetterThan_ReturnsTrue(SuperCard[] pTestHand)
+        public void ThreeOfAKind_IsBetterThan_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.ThreeOfAKind(pTestHand);
             Assert.That(result == false);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.TwoPair })]
-        public void TwoPair_IsTwoPair_ReturnsTrue(SuperCard[] pTestHand)
+        public void TwoPair_IsTwoPair_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.TwoPair(pTestHand);
             Assert.That(result == true);
@@ -471,14 +471,14 @@ namespace CardLibrary.UnitTests
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
-        public void TwoPair_IsBetterThan_ReturnsTrue(SuperCard[] pTestHand)
+        public void TwoPair_IsBetterThan_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.TwoPair(pTestHand);
             Assert.That(result == false);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.OnePair })]
-        public void OnePair_IsOnePair_ReturnsTrue(SuperCard[] pTestHand)
+        public void OnePair_IsOnePair_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.OnePair(pTestHand);
             Assert.That(result == true);
@@ -487,14 +487,14 @@ namespace CardLibrary.UnitTests
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.TwoPair })]
-        public void OnePair_IsBetterThan_ReturnsTrue(SuperCard[] pTestHand)
+        public void OnePair_IsBetterThan_ReturnsTrue(Card[] pTestHand)
         {
             bool result = PokerHandEvaluator.OnePair(pTestHand);
             Assert.That(result == false);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Flush })]
-        public void EvaluatePokerHand_AssignsFlush_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsFlush_ReturnsTrue(Card[] pTesthand)
         {
             
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -504,7 +504,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Straight })]
-        public void EvaluatePokerHand_AssignsStraight_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsStraight_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -514,7 +514,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.StraightFlush })]
-        public void EvaluatePokerHand_AssignsStraightFlush_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsStraightFlush_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -524,7 +524,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.RoyalFlush })]
-        public void EvaluatePokerHand_AssignsRoyalFlush_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsRoyalFlush_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -534,7 +534,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FullHouse })]
-        public void EvaluatePokerHand_AssignsFullHouse_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsFullHouse_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -544,7 +544,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
-        public void EvaluatePokerHand_AssignsFourOfAKind_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsFourOfAKind_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -554,7 +554,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
-        public void EvaluatePokerHand_AssignsThreeOfAKind_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsThreeOfAKind_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -564,7 +564,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.TwoPair })]
-        public void EvaluatePokerHand_AssignsTwoPair_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsTwoPair_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -574,7 +574,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.OnePair })]
-        public void EvaluatePokerHand_AssignsOnePair_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsOnePair_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -584,7 +584,7 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.NotPokerHand })]
-        public void EvaluatePokerHand_AssignsNotPokerHand_ReturnsTrue(SuperCard[] pTesthand)
+        public void EvaluatePokerHand_AssignsNotPokerHand_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
@@ -594,11 +594,11 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.NotPokerHand })]
-        public void EvaluateHandValue_ValidCalculation_ReturnsTrue(SuperCard[] pTestHand)
+        public void EvaluateHandValue_ValidCalculation_ReturnsTrue(Card[] pTestHand)
         {
             int checkResult = 0;
 
-            foreach (SuperCard card in pTestHand)
+            foreach (Card card in pTestHand)
             {
                 checkResult += (int)card.CardRank;
             }

@@ -56,8 +56,8 @@ namespace CardLibrary
                 myDeck.ResetUsage();
 
                 // Retrieves the computer and player hands.
-                SuperCard[] computerHand = myDeck.GetCards(HandSize);
-                SuperCard[] playerHand = myDeck.GetCards(HandSize);
+                Card[] computerHand = myDeck.GetCards(HandSize);
+                Card[] playerHand = myDeck.GetCards(HandSize);
 
                 // Sorts the computer and player hands using the SuperCard's IComparable implementation.
                 Array.Sort(computerHand);
@@ -190,7 +190,7 @@ namespace CardLibrary
         /// </summary>
         /// <param name="pComputerHand">The computer's current hand</param>
         /// <param name="pDeck">The deck of 52 cards</param>
-        private static void ComputerDrawsOne(SuperCard[] pComputerHand, CardSet pDeck)
+        private static void ComputerDrawsOne(Card[] pComputerHand, CardSet pDeck)
         {
             // Stores the card object in the first position of the hand.
             int lowestValuedCard = (int)pComputerHand[0].CardRank;
@@ -228,7 +228,7 @@ namespace CardLibrary
         /// <param name="pDeck">The deck of 52 cards</param>
         /// <exception cref="IndexOutOfRangeException">When a player attempts to switch out a position that is higher than their hand size.</exception>
         /// <exception cref="FormatException">When a player attempts to enter a value that can't be parsed into an int32 (such as "Enter").</exception>
-        private static void PlayerDrawsOne(SuperCard[] pPlayerHand, CardSet pDeck)
+        private static void PlayerDrawsOne(Card[] pPlayerHand, CardSet pDeck)
         {
             bool cardReplaced = false;
 
@@ -295,12 +295,12 @@ namespace CardLibrary
         /// </summary>
         /// <param name="pComputerHand">Stores the computerHand[] of type SuperCard</param>
         /// <param name="pPlayerHand">Stores the playerHand[] of type SuperCard</param>
-        private static void DisplayHands(SuperCard[] pComputerHand, SuperCard[] pPlayerHand)
+        private static void DisplayHands(Card[] pComputerHand, Card[] pPlayerHand)
         {
             Console.WriteLine("DEALER HAND");
 
             // Loops through cards (and their card classes) stored in pComputerHand[] and displays them. 
-            foreach (SuperCard card in pComputerHand)
+            foreach (Card card in pComputerHand)
             {
                 if (card != null)
                 {
@@ -316,7 +316,7 @@ namespace CardLibrary
             Console.WriteLine("\nPLAYER HAND");
 
             // Loops through cards (and their card classes) stored in pPlayerHand[] and displays them. 
-            foreach (SuperCard card in pPlayerHand)
+            foreach (Card card in pPlayerHand)
             {
                 if (card != null)
                 {
@@ -338,7 +338,7 @@ namespace CardLibrary
         /// <param name="pComputerHand">The computer's current hand.</param>
         /// <param name="pPlayerHand">The player's current hand.</param>
         /// <returns>Returns true if the player won and false if the player lost. This value is stored in the the bool won variable.</returns>
-        private static bool CompareHands(SuperCard[] pComputerHand, SuperCard[] pPlayerHand)
+        private static bool CompareHands(Card[] pComputerHand, Card[] pPlayerHand)
         {
             int playerHandValue = PokerHandEvaluator.EvaluateHandValue(pPlayerHand);
             int computerHandValue = PokerHandEvaluator.EvaluateHandValue(pComputerHand);
