@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace CardLibrary.UnitTests
@@ -6,10 +7,20 @@ namespace CardLibrary.UnitTests
     [TestFixture]
     class CardSetTests
     {
+        /// <summary>
+        /// Retrieves a test deck. 
+        /// </summary>
+        /// <returns>Returns testDeck which is of type CardSet.</returns>
+        private CardSet GetTestDeck()
+        {
+            CardSet testdeck = new CardSet();
+            return testdeck;
+        }
+
         [Test]
         public void CardSet_ValidateDeck_ReturnsTrue()
         {
-            CardSet testDeck = new CardSet();
+            CardSet testDeck = GetTestDeck();
 
             var totalClubCards = (from card in testDeck.cardArray
                                   where card.CardSuit == Suit.Club
@@ -41,7 +52,7 @@ namespace CardLibrary.UnitTests
         [Test]
         public void ResetUsage_ValidateInPlayReset_ReturnsTrue()
         {
-            CardSet testdeck = new CardSet();
+            CardSet testdeck = GetTestDeck();
 
             testdeck.ResetUsage();
 
@@ -61,20 +72,20 @@ namespace CardLibrary.UnitTests
         [Test]
         public void GetOneCard_ValidateInPlay_ReturnsTrue()
         {
-            CardSet testdeck = new CardSet();
+            CardSet testdeck = GetTestDeck();
 
             SuperCard[] testHand = testdeck.GetCards(5);
 
             bool result = false;
 
-            for (int i = 0; i < testHand.Length; i++)
+            foreach (SuperCard card in testHand)
             {
-                if (testHand[i].Inplay == true)
+                if (card.Inplay == true)
                 {
                     result = true;
                 }
             }
-
+            
             Assert.That(result = true);
         }
 
