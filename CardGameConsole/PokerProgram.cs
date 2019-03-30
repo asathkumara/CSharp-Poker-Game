@@ -16,8 +16,7 @@ namespace CardGameConsole
     /// This is the startup class for the game. 
     /// </summary>
     class PokerProgram
-    {
-        
+    {   
         static void Main(string[] args)
         {
             Console.Title = "C# Poker Game v2.0";
