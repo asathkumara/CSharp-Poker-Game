@@ -9,7 +9,7 @@ namespace CardLibrary
     /// <summary>
     /// The CardSet class deals with the deck's definition and implementation.
     /// </summary>
-    public class CardSet /*: Card*/
+    public class CardSet
     {
         const int DeckSize = 52;
 
@@ -26,18 +26,6 @@ namespace CardLibrary
 
             int i = 0;
 
-            // This for loop increments the underlying value of Rank.Deuce (that is, 2).
-            //for (Rank r = Rank.Deuce; r <= Rank.Ace; r++) 
-            //{
-
-            //    cardArray[i++] = new CardClub(r);
-
-            //    cardArray[i++] = new CardDiamond(r);
-
-            //    cardArray[i++] = new CardHeart(r);
-
-            //    cardArray[i++] = new CardSpade(r);
-            //}
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             {
                 foreach (Rank rank in Enum.GetValues(typeof(Rank)))
@@ -48,52 +36,6 @@ namespace CardLibrary
             }
 
             ShuffleDeck();
-
-            #region Alternative Foreach Loop
-            //foreach (Rank r in Enum.GetValues(typeof(Rank))) // Increments the underlying value of Rank
-            //{
-
-            //    cardArray[i++] = new CardClub(r);
-
-            //    cardArray[i++] = new CardDiamond(r);
-
-            //    cardArray[i++] = new CardHeart(r);
-
-            //    cardArray[i++] = new CardSpade(r);
-            //}
-            #endregion
-
-
-            #region Alternative Nested Loop
-            //for (Suit s = Suit.Club; s <= Suit.Spade; s++)
-            //{
-            //    for (Rank r = Rank.Deuce; r <= Rank.Ace; r++)
-            //    {
-            //        if ((int)s == 1) // When the Suit is equal to Club, the Club cards will be instantiated.
-            //        {
-            //            cardArray[i] = new CardClub(r);
-            //        }
-
-            //        if ((int)s == 2) // When the Suit is equal to Diamond, the Diamond cards will be instantiated.
-            //        {
-            //            cardArray[i] = new CardDiamond(r);
-            //        }
-
-            //        if ((int)s == 3) // When the Suit is equal to Heart, the Heart cards will be instantiated.
-            //        {
-            //            cardArray[i] = new CardHeart(r);
-            //        }
-
-            //        if ((int)s == 4) // When the Suit is equal to Spade, the Spade cards will be instantiated.
-            //        {
-            //            cardArray[i] = new CardSpade(r);
-            //        }
-
-            //        i++; // Without this increment, NullReferenceException will be thrown. 
-            //    }
-            //} // end of nested loop
-            #endregion
-
 
         } // end of constructor CardSet()
 
@@ -131,24 +73,6 @@ namespace CardLibrary
 
                 dealCards[i] = GetOneCard();
 
-                #region Previous implementation for finding a usable card
-                //int randomCard = myRandom.Next(0, 52);
-
-                //// If the card is not inplay, assign it to the temp array and set inplay to true.
-                //if (cardArray[randomCard].Inplay != true)
-                //{
-                //    cardArray[randomCard].Inplay = true;
-                //    dealCards[i] = cardArray[randomCard];
-
-                //}
-
-                //// Otherwise, decrement the iterator until we find a card that is not inplay.
-                //else
-                //{
-                //    i--;
-                //}
-                #endregion
-
             }
 
             return dealCards;
@@ -163,7 +87,6 @@ namespace CardLibrary
         {
             for (int i = 0; i < cardArray.Length; i++)
             {
-                // Loops through the cardArray and sets inplay property to false.
                 cardArray[i].Inplay = false;
             }
         }

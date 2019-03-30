@@ -53,12 +53,6 @@ namespace CardLibrary
         {
             bool isStraight = true;
 
-            //// Prevents index errors.
-            //if (pHand.Length != 5)
-            //{
-            //    return false;
-            //}
-
             // Sort pHand by rank.
             pHand = pHand.OrderBy(item => (int)item.CardRank).ToArray();
 
@@ -112,13 +106,6 @@ namespace CardLibrary
         {
             bool isRoyalFlush = false;
 
-            // Prevents index errors.
-            if (pHand.Length != 5)
-            {
-                return false;
-            }
-
-
             // If the hand is a straight, a flush and contains an Ace, then we have a Royal Flush.
             if (Straight(pHand) && Flush(pHand) && (int)pHand[4].CardRank == 14)
             {
@@ -138,12 +125,6 @@ namespace CardLibrary
         public static bool FullHouse(Card[] pHand)
         {
             bool isFullHouse = false;
-
-            // Prevents index errors.
-            if (pHand.Length != 5)
-            {
-                return false;
-            }
 
             // Sort pHand by rank.
             pHand = pHand.OrderBy(item => (int)item.CardRank).ToArray();
@@ -181,12 +162,6 @@ namespace CardLibrary
         {
             bool isFourOfAKind = false;
 
-            // Prevents index errors.
-            if (pHand.Length != 5)
-            {
-                return false;
-            }
-
             // Sort pHand by rank.
             pHand = pHand.OrderBy(item => (int)item.CardRank).ToArray();
 
@@ -222,12 +197,6 @@ namespace CardLibrary
         public static bool ThreeOfAKind(Card[] pHand)
         {
             bool isThreeOfAKind = false;
-
-            // Prevents index errors.
-            if (pHand.Length != 5)
-            {
-                return false;
-            }
 
             // Check if the hand is not a three pair but better.    
             if (FourOfAKind(pHand) || FullHouse(pHand))
@@ -273,12 +242,6 @@ namespace CardLibrary
         {
             bool isTwoPair = false;
 
-            // Prevents index errors.
-            if (pHand.Length != 5)
-            {
-                return false;
-            }
-
             // Check whether the hand is not a two pair but better.
             if (FourOfAKind(pHand) || FullHouse(pHand) || ThreeOfAKind(pHand))
             {
@@ -322,12 +285,6 @@ namespace CardLibrary
         public static bool OnePair(Card[] pHand)
         {
             bool isOnePair = false;
-
-            // Prevents index errors.
-            if (pHand.Length != 5)
-            {
-                return false;
-            }
 
             // Check whether the hand is not a one pair but better.
             if (FourOfAKind(pHand) || FullHouse(pHand) || ThreeOfAKind(pHand) || TwoPair(pHand))

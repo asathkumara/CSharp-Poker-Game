@@ -48,36 +48,30 @@ namespace CardLibrary
 
             Console.Clear();
 
-            // Create our deck object
             CardSet myDeck = new CardSet();
 
             while (Balance != 0)
             {
                 myDeck.ResetUsage();
 
-                // Retrieves the computer and player hands.
                 Card[] computerHand = myDeck.GetCards(HandSize);
                 Card[] playerHand = myDeck.GetCards(HandSize);
 
-                // Sorts the computer and player hands using the SuperCard's IComparable implementation.
                 Array.Sort(computerHand);
                 Array.Sort(playerHand);
 
-                // Display the hands and allow the player / computer to replace one of their cards.
                 DisplayHands(computerHand, playerHand);
                 PlayerDrawsOne(playerHand, myDeck);
                 ComputerDrawsOne(computerHand, myDeck);
 
-                // Sort the new hands and display them.
                 Array.Sort(computerHand);
                 Array.Sort(playerHand);
+
                 Console.WriteLine();
                 DisplayHands(computerHand, playerHand);
 
-                // Resets console to base color scheme
                 ResetConsoleColor();
 
-                // Determines whether the player won or lost by calling the CompareHands()
                 bool playerWon = CompareHands(computerHand, playerHand);
 
                 // Player won the hand, Computer lost the hand.
@@ -299,7 +293,6 @@ namespace CardLibrary
         {
             Console.WriteLine("DEALER HAND");
 
-            // Loops through cards (and their card classes) stored in pComputerHand[] and displays them. 
             foreach (Card card in pComputerHand)
             {
                 if (card != null)
@@ -309,13 +302,10 @@ namespace CardLibrary
                 }
             }
 
-            // Resets console color back to Base
             ResetConsoleColor();
 
-
             Console.WriteLine("\nPLAYER HAND");
-
-            // Loops through cards (and their card classes) stored in pPlayerHand[] and displays them. 
+            
             foreach (Card card in pPlayerHand)
             {
                 if (card != null)
@@ -326,7 +316,6 @@ namespace CardLibrary
 
             }
 
-            // Resets console color back to base
             ResetConsoleColor();
 
 
