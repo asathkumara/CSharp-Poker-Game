@@ -14,7 +14,8 @@ This is the current version of the game (after several refactorings):
 
 
 This was the diagram for the original project:
-![Chsarp-Poker-Game-Class-Diagram](https://user-images.githubusercontent.com/28933557/55281347-3e28ca00-52f0-11e9-868b-32f8b7fcfac7.JPG)
+![Chsarp-Original-Poker-Game-Class-Diagram](https://user-images.githubusercontent.com/28933557/55295035-a42f5300-53bd-11e9-9e35-bb40800ca181.JPG)
+
 
 
 
