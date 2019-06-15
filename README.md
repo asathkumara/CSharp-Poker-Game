@@ -1,4 +1,4 @@
-# CSharp-Poker-Game
+# CSharp-Poker-Game ![image](https://img.shields.io/badge/build-passing-green.svg)
 This poker game was a final project for my object-oriented programming course. It is a simple .NET framework console application that makes use of enums and interfaces.
 
 I improved the original project by adding and consolidating additional checks for different poker hands (the original project only checked for flushes). I also improved the underlying structure of the code and incorporated some unit tests. I'm still working on additional refactorings.
