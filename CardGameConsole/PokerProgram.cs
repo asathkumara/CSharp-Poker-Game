@@ -23,7 +23,7 @@ namespace CardGameConsole
 
             PokerSession.RunPokerSession();
                       
-            Console.ReadLine();
+            Console.ReadKey();
             
         } 
 

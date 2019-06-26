@@ -23,19 +23,19 @@ namespace CardLibrary.UnitTests
             CardSet testDeck = GetTestDeck();
             int cardCount = 13;
 
-            var totalClubCards = (from card in testDeck.cardArray
+            var totalClubCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Club
                                   select card).Count();
 
-            var totalDiamondCards = (from card in testDeck.cardArray
+            var totalDiamondCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Diamond
                                   select card).Count();
 
-            var totalHeartCards = (from card in testDeck.cardArray
+            var totalHeartCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Heart
                                   select card).Count();
 
-            var totalSpadeCards = (from card in testDeck.cardArray
+            var totalSpadeCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Spade
                                   select card).Count();
 
@@ -55,13 +55,13 @@ namespace CardLibrary.UnitTests
         {
             CardSet testdeck = GetTestDeck();
 
-            testdeck.ResetUsage();
+            testdeck.Reset();
 
             bool result = false;
 
-            for (int i = 0; i < testdeck.cardArray.Length; i++)
+            for (int i = 0; i < testdeck.cardSet.Length; i++)
             {
-                if (testdeck.cardArray[i].Inplay == false)
+                if (testdeck.cardSet[i].Inplay == false)
                 {
                     result = true;
                 }
