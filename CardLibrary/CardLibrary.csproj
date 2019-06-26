@@ -43,11 +43,13 @@
     <Compile Include="CardSet.cs" />
     <Compile Include="PokerHand.cs" />
     <Compile Include="PokerHandEvaluator.cs" />
+    <Compile Include="PokerHandExtensions.cs" />
     <Compile Include="PokerSession.cs" />
     <Compile Include="Rank.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuitExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
