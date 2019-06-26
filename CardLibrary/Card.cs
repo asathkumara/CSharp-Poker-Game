@@ -74,7 +74,7 @@ namespace CardLibrary
         public void Display()
         {
             ChangeColor();
-            Console.WriteLine($"{CardRank} of {CardSuit}s {CardSuit.ExtendToSymbol()}");
+            Console.WriteLine(this.ToString());
             Console.ResetColor();
         }
 
@@ -105,8 +105,15 @@ namespace CardLibrary
                     break;
             }
         }
-
-
+        
+        /// <summary>
+        /// ToString implementation for card.
+        /// </summary>
+        /// <returns>Returns a readable string which contains the rank, suit and symbol of the card.</returns>
+        public override string ToString()
+        {
+            return $"{CardRank} of {CardSuit}s {CardSuit.ExtendToSymbol()}";
+        }
 
     }
 }
