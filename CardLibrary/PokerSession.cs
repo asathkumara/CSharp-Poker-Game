@@ -52,24 +52,16 @@ namespace CardLibrary
 
             while (Balance != 0)
             {
-                myDeck.ResetUsage();
+                myDeck.Reset();
 
                 Card[] computerHand = myDeck.GetCards(HandSize);
                 Card[] playerHand = myDeck.GetCards(HandSize);
-
-                Array.Sort(computerHand);
-                Array.Sort(playerHand);
-
                 DisplayHands(computerHand, playerHand);
+
                 PlayerDrawsOne(playerHand, myDeck);
                 ComputerDrawsOne(computerHand, myDeck);
-
-                Array.Sort(computerHand);
-                Array.Sort(playerHand);
-
                 Console.WriteLine();
                 DisplayHands(computerHand, playerHand);
-
                 ResetConsoleColor();
 
                 bool playerWon = CompareHands(computerHand, playerHand);
@@ -102,7 +94,7 @@ namespace CardLibrary
 
                 TerminatePokerSession();
 
-                Console.ReadLine();
+                Console.ReadKey();
                 Console.Clear();
 
             } // end of while (PokerSession.Balance != 0)
@@ -206,6 +198,7 @@ namespace CardLibrary
                 pComputerHand[lowestCardIndex] = pDeck.GetOneCard();
             }
 
+            Array.Sort(pComputerHand);
 
         }
 
@@ -222,14 +215,14 @@ namespace CardLibrary
 
             while (!cardReplaced)
             {
-                Console.WriteLine
-                (
-                    "\nEnter 1, 2, 3, 4 or 5 to replace a card in your hand." +
-                    "\nEnter 0 if you don't want to replace a card in your hand."
-                );
-
                 try
                 {
+                    Console.WriteLine
+                    (
+                    "\nEnter 1, 2, 3, 4 or 5 to replace a card in your hand." +
+                    "\nEnter 0 if you don't want to replace a card in your hand."
+                    );
+
                     switch (Int32.Parse(Console.ReadLine()))
                     {
                         case 0:
@@ -259,6 +252,7 @@ namespace CardLibrary
                             cardReplaced = true;
                             break;
                     }
+
                 }
                 catch (ArgumentNullException)
                 {
@@ -282,6 +276,8 @@ namespace CardLibrary
                 }
 
             } // end of while(!cardReplaced)
+
+            Array.Sort(pPlayerHand);
 
         } // end of PlayerDrawsOne()
 
