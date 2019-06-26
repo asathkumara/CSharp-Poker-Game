@@ -75,6 +75,8 @@ namespace CardLibrary
 
             }
 
+            Array.Sort(dealCards);
+
             return dealCards;
             
         } // end of GetCards()
