@@ -46,19 +46,6 @@ namespace CardLibrary
         /// </returns>
         public int CompareTo(Card other)
         {
-            #region Alternative Sort
-            //// If the cardSuit is equal, then the cards will be sorted by cardRank. 
-            //if (this.CardSuit.CompareTo(other.CardSuit) == 0)
-            //{
-            //    return this.CardRank.CompareTo(other.CardRank);
-            //}
-            //// Otherwise, the cards will be sorted by cardSuit.
-            //else
-            //{
-            //    return this.CardSuit.CompareTo(other.CardSuit);
-            //}
-            #endregion
-
             return this.CardRank.CompareTo(other.CardRank);
         }
 
