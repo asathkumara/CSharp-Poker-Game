@@ -21,6 +21,7 @@ namespace CardLibrary.UnitTests
         public void CardSet_ValidateDeck_ReturnsTrue()
         {
             CardSet testDeck = GetTestDeck();
+            int cardCount = 13;
 
             var totalClubCards = (from card in testDeck.cardArray
                                   where card.CardSuit == Suit.Club
@@ -40,7 +41,7 @@ namespace CardLibrary.UnitTests
 
             bool result = false;
 
-            if (totalClubCards == 13 && totalDiamondCards == 13 && totalHeartCards == 13 && totalSpadeCards == 13)
+            if (totalClubCards == cardCount && totalDiamondCards == cardCount && totalHeartCards == cardCount && totalSpadeCards == cardCount)
             {
                 result = true;
             }
