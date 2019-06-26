@@ -74,8 +74,7 @@ namespace CardLibrary
 
                 bool playerWon = CompareHands(computerHand, playerHand);
 
-                // Player won the hand, Computer lost the hand.
-                if (playerWon == true)
+                if (playerWon)
                 {
 
                     Console.WriteLine
@@ -83,12 +82,12 @@ namespace CardLibrary
                         $"\nYou won. \nYou have {++Balance:C} left. " +
                         $"\nHit Enter for another hand."
                     );
+
                     PlayerWinCounter++;
                     RoundCounter++;
                 }
 
-                // Player lost the hand, Computer won the hand.
-                if (playerWon == false)
+                if (!playerWon)
                 {
 
                     Console.WriteLine
@@ -96,6 +95,7 @@ namespace CardLibrary
                         $"\nYou lost. \nYou have {--Balance:C} left. " +
                         $"\nHit Enter for another hand."
                     );
+
                     ComputerWinCounter++;
                     RoundCounter++;
                 }
@@ -186,28 +186,22 @@ namespace CardLibrary
         /// <param name="pDeck">The deck of 52 cards</param>
         private static void ComputerDrawsOne(Card[] pComputerHand, CardSet pDeck)
         {
-            // Stores the card object in the first position of the hand.
-            int lowestValuedCard = (int)pComputerHand[0].CardRank;
-
-            // Stores the index of the lowest card.
+            int lowestCardValue = (int)pComputerHand[0].CardRank;
             int lowestCardIndex = 0;
-
-            // Checks for a poker hand. 
             PokerHand pokerHand = PokerHandEvaluator.EvaluatePokerHand(pComputerHand);
-
-
+            
             for (int i = 0; i < pComputerHand.Length; i++)
             {
-                // When the initial card object is no longer the lowest valued card, we update it and save the index.
-                if (lowestValuedCard > (int)pComputerHand[i].CardRank)
+                int currentCardValue = (int)pComputerHand[i].CardRank;
+
+                if (lowestCardValue > currentCardValue)
                 {
-                    lowestValuedCard = (int)pComputerHand[i].CardRank;
+                    lowestCardValue = currentCardValue;
                     lowestCardIndex = i;
                 }
             }
 
-            // When the lowest valued card is less than or equal to 7 and not a poker hand, replace the card.
-            if (lowestValuedCard <= 7 && pokerHand == PokerHand.NotPokerHand)
+            if (lowestCardValue <= 7 && pokerHand == PokerHand.NotPokerHand)
             {
                 pComputerHand[lowestCardIndex] = pDeck.GetOneCard();
             }
@@ -236,7 +230,6 @@ namespace CardLibrary
 
                 try
                 {
-                    // Switch on the user's response and update the card by position if a valid integer is entered.
                     switch (Int32.Parse(Console.ReadLine()))
                     {
                         case 0:
@@ -263,21 +256,29 @@ namespace CardLibrary
                             cardReplaced = true;
                             break;
                         default:
-                            Console.WriteLine("\nInvalid Input.");
-                            cardReplaced = false;
+                            cardReplaced = true;
                             break;
                     }
                 }
-
+                catch (ArgumentNullException)
+                {
+                    break;
+                }
+                catch (OverflowException)
+                {
+                    break;
+                }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Invalid Input.");
-
+                    break;
                 }
-
                 catch (IndexOutOfRangeException)
+                { 
+                    break;
+                }
+                catch (Exception)
                 {
-                    Console.WriteLine("\nInvalid Input.");
+                    break;
                 }
 
             } // end of while(!cardReplaced)
@@ -298,7 +299,6 @@ namespace CardLibrary
                 if (card != null)
                 {
                     card.Display();
-
                 }
             }
 
@@ -311,13 +311,11 @@ namespace CardLibrary
                 if (card != null)
                 {
                     card.Display();
-
                 }
 
             }
 
             ResetConsoleColor();
-
 
         } // end of DisplayHands()
 
@@ -335,7 +333,6 @@ namespace CardLibrary
             PokerHand playerHand = PokerHandEvaluator.EvaluatePokerHand(pPlayerHand);
             PokerHand computerHand = PokerHandEvaluator.EvaluatePokerHand(pComputerHand);
 
-            // If the poker hands of both players are equal, the player loses.
             if (playerHand == computerHand)
             {
                 Console.WriteLine
@@ -344,19 +341,13 @@ namespace CardLibrary
                     $"\nYour hand was worth {playerHandValue} points " +
                     $"and the computer's hand was worth {computerHandValue} points."
                 );
-
-
-                // If the player's hand value is greater than the computer's hand value, the player won.
+                
                 if (playerHandValue > computerHandValue)
-                {
                     return true;
-                }
 
-                // If the player's hand value is less than or equal to the computer's hand value, the player lost.
-                if (playerHandValue <= computerHandValue)
-                {
+                if (playerHandValue <= computerHandValue)                
                     return false;
-                }
+                
             }
 
             // If the player's poker hand rarity is greater than that of the computer's, the player wins. 
@@ -373,10 +364,9 @@ namespace CardLibrary
                 return false;
             }
 
-            else
-            {
-                return false;
-            }
+            
+            return false;
+            
 
 
         } // end of CompareHands()     
@@ -400,7 +390,7 @@ namespace CardLibrary
 
             Console.WriteLine
             (
-                 "Welcome to the Poker Game." +
+                 "Welcome to C# Poker." +
                  "\n\nRules:" +
                 $"\n\nYou start with {HandSize} cards in your hand and a balance of {Balance:C}. Each round will be a $1.00 bet." +
                  "\n\nBoth players are given the chance to replace one card in their hand if they choose to." +
