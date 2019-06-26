@@ -13,16 +13,14 @@ namespace CardLibrary
     {
         const int DeckSize = 52;
 
-        public Card[] cardArray;     
+        public Card[] cardSet;     
         
         /// <summary>
         /// The constructor for the class CardSet further defines the size of the deck and populates it with card objects.
         /// </summary>
         public CardSet()
         {
-
-            cardArray = new Card[DeckSize];
-
+            cardSet = GetCardSet();
 
             int i = 0;
 
@@ -30,19 +28,28 @@ namespace CardLibrary
             {
                 foreach (Rank rank in Enum.GetValues(typeof(Rank)))
                 {
-                    cardArray[i] = new Card( suit, rank );
+                    cardSet[i] = new Card(suit, rank);
                     i++;
                 }
             }
 
-            ShuffleDeck();
+            Shuffle();
 
         } // end of constructor CardSet()
 
         /// <summary>
+        /// Factory method to retrieve a card set.
+        /// </summary>
+        /// <returns>A card set</returns>
+        private static Card[] GetCardSet()
+        {
+            return new Card[DeckSize];
+        }
+
+        /// <summary>
         /// Shuffles the deck 1000 times.
         /// </summary>
-        private void ShuffleDeck()
+        private void Shuffle()
         {
             Random myRandom = new Random();
             Card card = null;
@@ -51,9 +58,9 @@ namespace CardLibrary
                 for (int j = 0; j < DeckSize; j++)
                 {
                     int secondCardIndex = myRandom.Next(13);
-                    card = cardArray[j];
-                    cardArray[j] = cardArray[secondCardIndex];
-                    cardArray[secondCardIndex] = card;
+                    card = cardSet[j];
+                    cardSet[j] = cardSet[secondCardIndex];
+                    cardSet[secondCardIndex] = card;
                 }
             }
         }
@@ -69,11 +76,7 @@ namespace CardLibrary
             Card[] dealCards = new Card[pHowManyCards];
             
             for (int i = 0; i < dealCards.Length; i++)
-            {
-
                 dealCards[i] = GetOneCard();
-
-            }
 
             Array.Sort(dealCards);
 
@@ -85,12 +88,11 @@ namespace CardLibrary
         /// <summary>
         /// Loops through the collection stored in cardArray[] and sets each of the card objects' inplay property to false.
         /// </summary>
-        public void ResetUsage()
+        public void Reset()
         {
-            for (int i = 0; i < cardArray.Length; i++)
-            {
-                cardArray[i].Inplay = false;
-            }
+            for (int i = 0; i < cardSet.Length; i++)
+                cardSet[i].Inplay = false;
+     
         }
 
 
@@ -100,29 +102,25 @@ namespace CardLibrary
         /// <returns>Returns oneCard which is an object of type SuperCard</returns>
         public Card GetOneCard()
         {
-            Card oneCard = null;
+            Card newCard = null;
             Random myRandom = new Random();
 
-            for (int i = 0; i < cardArray.Length; i++)
-            {
-                
+            for (int i = 0; i < cardSet.Length; i++)
+            {              
                 int randomCard = myRandom.Next(0, 52);
 
-                if (cardArray[randomCard].Inplay != true)
+                if (cardSet[randomCard].Inplay != true)
                 {
-                    cardArray[randomCard].Inplay = true;
-                    oneCard = cardArray[randomCard];
+                    cardSet[randomCard].Inplay = true;
+                    newCard = cardSet[randomCard];
                     break;    
                 }
 
                 else
-                {
-                    i--;
-                }
-  
+                    i--;                 
             }
 
-            return oneCard;
+            return newCard;
 
         }
 
