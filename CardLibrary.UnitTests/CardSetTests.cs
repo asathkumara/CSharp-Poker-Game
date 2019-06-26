@@ -10,11 +10,10 @@ namespace CardLibrary.UnitTests
         /// <summary>
         /// Retrieves a test deck. 
         /// </summary>
-        /// <returns>Returns testDeck which is of type CardSet.</returns>
+        /// <returns>Returns a card set.</returns>
         private CardSet GetTestDeck()
         {
-            CardSet testdeck = new CardSet();
-            return testdeck;
+            return new CardSet();
         }
 
         [Test]
@@ -23,35 +22,33 @@ namespace CardLibrary.UnitTests
             CardSet testDeck = GetTestDeck();
             int cardCount = 13;
 
-            var totalClubCards = (from card in testDeck.cardSet
+            int totalClubCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Club
                                   select card).Count();
 
-            var totalDiamondCards = (from card in testDeck.cardSet
+            int totalDiamondCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Diamond
                                   select card).Count();
 
-            var totalHeartCards = (from card in testDeck.cardSet
+            int totalHeartCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Heart
                                   select card).Count();
 
-            var totalSpadeCards = (from card in testDeck.cardSet
+            int totalSpadeCards = (from card in testDeck.cardSet
                                   where card.CardSuit == Suit.Spade
                                   select card).Count();
 
-            bool result = false;
-
-            if (totalClubCards == cardCount && totalDiamondCards == cardCount && totalHeartCards == cardCount && totalSpadeCards == cardCount)
-            {
-                result = true;
-            }
+            bool result = totalClubCards == cardCount && 
+                          totalDiamondCards == cardCount && 
+                          totalHeartCards == cardCount && 
+                          totalSpadeCards == cardCount;
 
             Assert.That(result == true);
 
         }
 
         [Test]
-        public void ResetUsage_ValidateInPlayReset_ReturnsTrue()
+        public void Reset_ValidateInPlayReset_ReturnsTrue()
         {
             CardSet testdeck = GetTestDeck();
 
@@ -61,10 +58,9 @@ namespace CardLibrary.UnitTests
 
             for (int i = 0; i < testdeck.cardSet.Length; i++)
             {
-                if (testdeck.cardSet[i].Inplay == false)
-                {
+                if (!testdeck.cardSet[i].Inplay)
                     result = true;
-                }
+                
             }
 
             Assert.That(result = true);
@@ -81,10 +77,9 @@ namespace CardLibrary.UnitTests
 
             foreach (Card card in testHand)
             {
-                if (card.Inplay == true)
-                {
+                if (card.Inplay)
                     result = true;
-                }
+                
             }
             
             Assert.That(result = true);
