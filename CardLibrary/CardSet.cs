@@ -109,7 +109,7 @@ namespace CardLibrary
             {              
                 int randomCard = myRandom.Next(0, 52);
 
-                if (cardSet[randomCard].Inplay != true)
+                if (!cardSet[randomCard].Inplay)
                 {
                     cardSet[randomCard].Inplay = true;
                     newCard = cardSet[randomCard];
