@@ -22,14 +22,14 @@ namespace CardLibrary
         {
             cardSet = GetCardSet();
 
-            int i = 0;
+            int index = 0;
 
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             {
                 foreach (Rank rank in Enum.GetValues(typeof(Rank)))
                 {
-                    cardSet[i] = new Card(suit, rank);
-                    i++;
+                    cardSet[index] = new Card(suit, rank);
+                    index++;
                 }
             }
 
