@@ -19,7 +19,7 @@ namespace CardGameConsole
     {   
         static void Main(string[] args)
         {
-            Console.Title = "C# Poker Game v2.0";
+            Console.Title = "C# Poker Game v2.5";
 
             PokerSession.RunPokerSession();
                       
