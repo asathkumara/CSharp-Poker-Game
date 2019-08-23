@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardSet.cs" />
+    <Compile Include="Deck.cs" />
     <Compile Include="PokerHand.cs" />
     <Compile Include="PokerHandEvaluator.cs" />
     <Compile Include="PokerHandExtensions.cs" />

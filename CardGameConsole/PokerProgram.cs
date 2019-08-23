@@ -12,22 +12,17 @@ using CardLibrary;
 
 namespace CardGameConsole
 {
-    /// <summary>
-    /// This is the startup class for the game. 
-    /// </summary>
     class PokerProgram
     {   
         static void Main(string[] args)
         {
             Console.Title = "C# Poker Game v2.5";
 
-            PokerSession.RunPokerSession();
+            PokerSession.Run();
                       
             Console.ReadKey();
             
         } 
-
-        
 
     } // end of class Program
 

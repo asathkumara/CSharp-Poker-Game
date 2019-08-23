@@ -9,81 +9,55 @@ using System.Threading.Tasks;
 namespace CardLibrary
 {
     /// <summary>
-    /// The SuperCard class contains the properties and the display method for the various card objects.
+    /// Represents a playing card.
     /// </summary>
-    /// <remarks>SuperCard uses an IComparable implementation to sort the cards by suit and then by rank.</remarks>
     public class Card : IComparable<Card>, IEquatable<Card>
     {
         /// <summary>
-        /// The CardRank property represents the rank of the card.
+        /// The rank of the playing card.
         /// </summary>
-        /// <value>The value for cardRank is retrieved through each of the card objects' constructor.</value>
-        public Rank CardRank { get; set; }
+        /// <value>The value is one of possible values in the Rank enum.</value>
+        public Rank Rank { get; set; }
 
         /// <summary>
-        /// The CardSuit property represents the suit of the card.
+        /// The suit of the card.
         /// </summary>
-        /// <value>the value for cardSuit is retrieved from each card object.</value>
-        public Suit CardSuit { get; set; }
+        /// <value>The value is one of possible values in the Suit enum.</value>
+        public Suit Suit { get; set; }
 
         /// <summary>
-        /// The Inplay property represents whether the card is already being played.
+        /// The state of the playing card.
         /// </summary>
-        /// <value>The value for inplay is retrieved from the CardSet class's GetCard and ResetUsage methods.</value>
+        /// <value>The value is set by the CardSet class.</value>
         public bool Inplay { get; set; }
 
         /// <summary>
-        /// Contains the IComparable implementation for the SuperCard class
+        /// Constructs a playing card based on the given suit and rank.
         /// </summary>
-        /// <remarks>
-        /// Sorts the cards by cardRank
-        /// </remarks>
-        /// <param name="other">Contains the other object that the current object is being compared with</param>
-        /// <returns>
-        /// Returns a 1 if this card is greater than the other card,
-        ///         a -1 if this card is less than the other card,
-        ///         or a 0 if both cards are equal.
-        /// </returns>
-        public int CompareTo(Card other)
-        {
-            return this.CardRank.CompareTo(other.CardRank);
-        }
-
+        /// <param name="pSuit">The suit of the playing card.</param>
+        /// <param name="pRank">The rank of the playing card.</param>
         public Card(Suit pSuit, Rank pRank)
         {
-            CardSuit = pSuit;
-            CardRank = pRank;
+            Suit = pSuit;
+            Rank = pRank;
         }
 
         /// <summary>
-        /// Contains the IEquatable implementation for the SuperCard class
+        /// Displays the cards.
         /// </summary>
-        /// <param name="other">Contains the other object that the current object is being compared with</param>
-        /// <returns>Returns true if the card suits are equal and false if they aren't.</returns>
-        public bool Equals(Card other)
-        {
-
-            return this.CardSuit.Equals(other.CardSuit);
-
-        }
-
-        /// <summary>
-        /// Displays the card objects on the console.
-        /// </summary>
-        /// <remarks>The following children classes are able to overwrite this method: CardClub, CardDiamond, CardHeart & CardSpade</remarks>
         public void Display()
         {
-            ChangeColor();
+            SetDisplayColor();
             Console.WriteLine(this.ToString());
             Console.ResetColor();
         }
 
         /// <summary>
-        /// Changes the color of the cards.
+        /// Sets the foreground and background color of the displayed cards.
         /// </summary>
-        private void ChangeColor()
+        private void SetDisplayColor()
         {
-            switch (CardSuit)
+            switch (Suit)
             {
                 case Suit.Club:
                     Console.BackgroundColor = ConsoleColor.White;
@@ -105,15 +79,67 @@ namespace CardLibrary
                     break;
             }
         }
-        
+
         /// <summary>
-        /// ToString implementation for card.
+        /// Compares two card objects.
+        /// </summary>
+        /// <remarks>Compares the cards by their rank.</remarks>
+        /// <param name="pOther">The other card object to be compared.</param>
+        /// <returns>
+        /// Returns an indication of their relative values.
+        /// </returns>
+        public int CompareTo(Card pOther)
+        {
+            return this.Rank.CompareTo(pOther.Rank);
+        }
+
+        /// <summary>
+        /// Returns a string representation of the card.
         /// </summary>
         /// <returns>Returns a readable string which contains the rank, suit and symbol of the card.</returns>
         public override string ToString()
         {
-            return $"{CardRank} of {CardSuit}s {CardSuit.ExtendToSymbol()}";
+            return $"{Rank} of {Suit}s {Suit.ExtendToSymbol()}";
         }
 
+        /// <summary>
+        /// Checks two card objects for equality.
+        /// </summary>
+        /// <param name="pOther">The other card object to be compared.
+        /// <returns>Returns true if the card instances are equal; returns false otherwise.</returns>
+        public bool Equals(Card pOther)
+        {
+            if (ReferenceEquals(null, pOther))
+                return false;
+
+            if (ReferenceEquals(this, pOther))
+                return true;
+
+            return this.Suit.Equals(pOther.Suit) &&
+                this.Rank.Equals(pOther.Rank);
+
+        }
+
+        /// <summary>
+        /// Checks a card object and another object for equality.
+        /// </summary>
+        /// <param name="pObject">The other object to be compared.</param>
+        /// <returns>Returns true if the instances are equal; returns false otherwise.</returns>
+        public override bool Equals(object pObject)
+        {
+            return this.Equals(pObject as Card);
+        }
+
+        /// <summary>
+        /// Returns a hash code for this card.
+        /// </summary>
+        /// <returns>Returns a hash code for this object.</returns>
+        public override int GetHashCode()
+        {
+            var hashCode = 393341827;
+            hashCode = hashCode * -1521134295 + Rank.GetHashCode();
+            hashCode = hashCode * -1521134295 + Suit.GetHashCode();
+            return hashCode;
+        }
     }
 }
