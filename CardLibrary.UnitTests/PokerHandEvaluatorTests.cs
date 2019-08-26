@@ -366,7 +366,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.NotPokerHand)
+            if (pPokerHand == PokerHand.HighCard)
             {
                 yield return new Card[]
                 {
@@ -571,27 +571,13 @@ namespace CardLibrary.UnitTests
 
         }
 
-        [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.NotPokerHand })]
-        public void EvaluatePokerHand_AssignsNotPokerHand_ReturnsTrue(Card[] pTesthand)
+        [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.HighCard })]
+        public void EvaluatePokerHand_AssignsHighCard_ReturnsTrue(Card[] pTesthand)
         {
 
             PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
 
-            Assert.That(result == PokerHand.NotPokerHand);
-
-        }
-
-        [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.NotPokerHand })]
-        public void EvaluateHandValue_ValidCalculation_ReturnsTrue(Card[] pTestHand)
-        {
-            int expected = 0;
-
-            foreach (Card card in pTestHand)
-                expected += (int)card.Rank;
-
-            int result = PokerHandEvaluator.EvaluateHandValue(pTestHand);
-
-            Assert.That(result == expected);
+            Assert.That(result == PokerHand.HighCard);
 
         }
     }

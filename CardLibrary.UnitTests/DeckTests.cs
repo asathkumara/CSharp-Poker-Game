@@ -35,48 +35,5 @@ namespace CardLibrary.UnitTests
 
         }
 
-        [Test]
-        public void Reset_CardsNotInplay_ReturnsTrue()
-        {
-            Deck testDeck = GetTestDeck();
-
-            testDeck.Reset();
-
-            bool isReset = true;
-
-            for (int i = 0; i < testDeck.Size; i++)
-            {
-                if (testDeck[i].Inplay)
-                {
-                    isReset = false;
-                    break;
-                }
-                
-            }
-
-            Assert.That(isReset);
-        }
-
-        [Test]
-        public void GetCards_CardsInplay_ReturnsTrue()
-        {
-            Deck testdeck = GetTestDeck();
-
-            Card[] testHand = testdeck.GetCards(5);
-
-            bool isValidCard = true;
-
-            foreach (Card card in testHand)
-            {
-                if (!card.Inplay)
-                {
-                    isValidCard = false;
-                    break;
-                }
-            }
-            
-            Assert.That(isValidCard);
-        }
-
     }
 }
