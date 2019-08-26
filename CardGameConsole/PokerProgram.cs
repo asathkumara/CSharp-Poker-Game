@@ -1,6 +1,6 @@
 ﻿/************************
  Author: Asel Sathkumara
- Version: 2.5
+ Version: 3.0
  ************************/
 
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CardLibrary;
+using PokerSessionLibrary;
 
 namespace CardGameConsole
 {
@@ -16,12 +16,17 @@ namespace CardGameConsole
     {   
         static void Main(string[] args)
         {
-            Console.Title = "C# Poker Game v2.5";
+            // Five card draw 
+            House.DisplayHouseRules();
 
-            PokerSession.Run();
-                      
-            Console.ReadKey();
-            
+            IDealer dealer = DealerFactory.CreateDealer();
+            IPlayer player1 = PlayerFactory.CreatePlayer(PlayerType.Computer);
+            IPlayer player2 = PlayerFactory.CreatePlayer(PlayerType.Human);
+            List<IPlayer> players = new List<IPlayer>() { player1, player2 };
+            PokerGame pokerGame = PokerGameFactory.CreateGame(players, dealer);
+
+            pokerGame.Start();
+            Console.ReadLine();
         } 
 
     } // end of class Program

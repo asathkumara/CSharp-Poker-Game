@@ -77,9 +77,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CardLibrary\CardLibrary.csproj">
-      <Project>{2fc5f0f2-aa87-4788-b5ce-0c4eb71e31cd}</Project>
-      <Name>CardLibrary</Name>
+    <ProjectReference Include="..\PokerSessionLibrary\PokerSessionLibrary.csproj">
+      <Project>{a017f36b-cf2e-4d57-b55f-f6764033f5d5}</Project>
+      <Name>PokerSessionLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
