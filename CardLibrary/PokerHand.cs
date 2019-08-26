@@ -10,8 +10,8 @@ namespace CardLibrary
     /// Contains the types of poker hands. 
     /// </summary>
     public enum PokerHand
-    {
-        NotPokerHand = 0,
+    { 
+        HighCard = 0,
         OnePair,
         TwoPair,
         ThreeOfAKind,

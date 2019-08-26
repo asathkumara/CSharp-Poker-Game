@@ -12,51 +12,61 @@ namespace CardLibrary
     public static class PokerHandExtensions
     {
         /// <summary>
-        /// Converts the enum literal to a readable string with formatting. 
+        /// Returns a string representation of the PokerHand rank.
         /// </summary>
-        /// <param name="pPokerHand">This instance of the enum.</param>
-        /// <returns>Returns output which is the formatted string.</returns>
-        public static string ExtendToString(this PokerHand pPokerHand)
+        /// <param name="pPokerHand">The PokerHand rank.</param>
+        /// <returns>Returns a string representation of the PokerHand rank.</returns>
+        public static string GetString(this PokerHand pPokerHand)
         {
             string output = String.Empty;
 
             switch (pPokerHand)
             {
                 case PokerHand.OnePair:
-                    output = "a one pair";
+                    output = "One Pair";
                     break;
                 case PokerHand.TwoPair:
-                    output = "a two pair";
+                    output = "Two Pair";
                     break;
                 case PokerHand.ThreeOfAKind:
-                    output = "a three of a kind";
+                    output = "Three Of A Kind";
                     break;
                 case PokerHand.Straight:
-                    output = "a straight";
+                    output = "Straight";
                     break;
                 case PokerHand.Flush:
-                    output = "a flush";
+                    output = "Flush";
                     break;
                 case PokerHand.FullHouse:
-                    output = "a full house";
+                    output = "Full House";
                     break;
                 case PokerHand.FourOfAKind:
-                    output = "a four of a kind";
+                    output = "Four Of A Kind";
                     break;
                 case PokerHand.StraightFlush:
-                    output = "a straight flush";
+                    output = "Straight Flush";
                     break;
                 case PokerHand.RoyalFlush:
-                    output = "a royal flush";
+                    output = "Royal Flush";
                     break;
                 default:
-                    output = "no poker hands";
+                    output = "High Card";
                     break;
             }
 
             return output;
         }
 
-
+        /// <summary>
+        /// Returns a lowercase string representation of the PokerHand rank.
+        /// </summary>
+        /// <param name="pPokerHand">The PokerHand rank.</param>
+        /// <returns>Returns a lowercase string representation of the PokerHand rank.</returns>
+        public static string GetLowerCaseString(this PokerHand pPokerHand)
+        {
+            return pPokerHand.GetString().ToLower();
+        }
     }
+
+    
 }

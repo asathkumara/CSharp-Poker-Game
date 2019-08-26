@@ -26,7 +26,6 @@ namespace CardLibrary
         public Deck()
         {
             deck = GetDeck();
-            Shuffle();
         }
         
         public Card this[int pIndex]
@@ -66,85 +65,27 @@ namespace CardLibrary
         }
 
         /// <summary>
-        /// Shuffles the deck.
-        /// </summary>
-        private void Shuffle()
-        {
-            Random random = new Random();
-
-            for (int i = deck.Length - 1; i > 0; i--)
-            {
-                int secondCardIndex = random.Next(0, 52);
-                Card temp = deck[i];
-                deck[i] = deck[secondCardIndex];
-                deck[secondCardIndex] = temp;
-            }
-
-        }
-
-        /// <summary> 
-        /// Retrieves a hand of cards.
-        /// </summary>
-        /// <param name="pSize">The size of the hand.
-        /// <returns>Returns a hand of cards.</returns>
-        public Card[] GetCards(int pSize)
-        {
-            Card[] hand = new Card[pSize];
-            
-            for (int i = 0; i < hand.Length; i++)
-                hand[i] = GetCard();
-
-            Array.Sort(hand);
-
-            return hand;
-            
-        }
-
-        /// <summary>
-        /// Retrieves one card that is not inplay from the card deck.
-        /// </summary>
-        /// <returns>Returns a card that is not inplay.</returns>
-        public Card GetCard()
-        {
-            Card newCard = deck.First(card => !card.Inplay);
-            newCard.Inplay = true;
-            return newCard;
-
-        }
-
-        /// <summary>
-        /// Resets the deck.
-        /// </summary>
-        public void Reset()
-        {
-            for (int i = 0; i < deck.Length; i++)
-                deck[i].Inplay = false;
-
-            Shuffle();
-        }
-
-        /// <summary>
         /// Returns a string representation of the deck.
         /// </summary>
         /// <returns>Returns a readable string of the cards in the deck that are not inplay.</returns>
         public override string ToString()
         {
-            return $"[{String.Join(", ", deck.Where(card => !card.Inplay))}]";
+            return $"[{String.Join<Card>(", ", deck)}]";
         }
 
         /// <summary>
-        /// Returns a enumerator that iterates through the CardSet
+        /// Returns a enumerator that iterates through the deck.
         /// </summary>
-        /// <returns>An enumerator that iterates through the CardSet</returns>
+        /// <returns>An enumerator that iterates through the deck.</returns>
         public IEnumerator<Card> GetEnumerator()
         {
             return ((IEnumerable<Card>)deck).GetEnumerator();
         }
 
         // <summary>
-        /// Returns a enumerator that iterates through the CardSet
+        /// Returns a enumerator that iterates through the deck.
         /// </summary>
-        /// <returns>An enumerator that iterates through the CardSet</returns>
+        /// <returns>An enumerator that iterates through the deck.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<Card>)deck).GetEnumerator();

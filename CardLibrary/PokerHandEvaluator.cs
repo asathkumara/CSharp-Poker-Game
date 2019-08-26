@@ -255,6 +255,9 @@ namespace CardLibrary
             if (IsStraightFlush(pHand))
                 return PokerHand.StraightFlush;
 
+            if (IsFourOfAKind(pHand))
+                return PokerHand.FourOfAKind;
+
             if (IsFullHouse(pHand))
                 return PokerHand.FullHouse;
 
@@ -263,9 +266,6 @@ namespace CardLibrary
 
             if (IsStraight(pHand))
                 return PokerHand.Straight;
-
-            if (IsFourOfAKind(pHand))
-                return PokerHand.FourOfAKind;
 
             if (IsThreeOfAKind(pHand))
                 return PokerHand.ThreeOfAKind;
@@ -276,18 +276,8 @@ namespace CardLibrary
             if (IsOnePair(pHand))
                 return PokerHand.OnePair;
 
-            return PokerHand.NotPokerHand;
+            return PokerHand.HighCard;
        
-        }
-
-        /// <summary>
-        /// Evaluates the value of the player's hand.
-        /// </summary>
-        /// <param name="pHand">The player's hand.</param>
-        /// <returns>Returns the value of the hand.</returns>
-        public static int EvaluateHandValue(Card[] pHand)
-        {
-            return pHand.Sum(card => (int)card.Rank);
         }
     }
 }

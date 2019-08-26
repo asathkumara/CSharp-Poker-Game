@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 
 namespace CardLibrary
 {
@@ -13,23 +12,8 @@ namespace CardLibrary
     /// </summary>
     public class Card : IComparable<Card>, IEquatable<Card>
     {
-        /// <summary>
-        /// The rank of the playing card.
-        /// </summary>
-        /// <value>The value is one of possible values in the Rank enum.</value>
-        public Rank Rank { get; set; }
-
-        /// <summary>
-        /// The suit of the card.
-        /// </summary>
-        /// <value>The value is one of possible values in the Suit enum.</value>
-        public Suit Suit { get; set; }
-
-        /// <summary>
-        /// The state of the playing card.
-        /// </summary>
-        /// <value>The value is set by the CardSet class.</value>
-        public bool Inplay { get; set; }
+        public Rank Rank { get; private set; }
+        public Suit Suit { get; private set; }
 
         /// <summary>
         /// Constructs a playing card based on the given suit and rank.
@@ -48,7 +32,7 @@ namespace CardLibrary
         public void Display()
         {
             SetDisplayColor();
-            Console.WriteLine(this.ToString());
+            Console.WriteLine(this);
             Console.ResetColor();
         }
 
@@ -76,7 +60,7 @@ namespace CardLibrary
                     Console.ForegroundColor = ConsoleColor.Black;
                     break;
                 default:
-                    break;
+                    throw new InvalidEnumArgumentException("Invalid suit, could not change display color.");
             }
         }
 
@@ -99,7 +83,7 @@ namespace CardLibrary
         /// <returns>Returns a readable string which contains the rank, suit and symbol of the card.</returns>
         public override string ToString()
         {
-            return $"{Rank} of {Suit}s {Suit.ExtendToSymbol()}";
+            return $"{Rank} of {Suit}s".PadRight(18) + $"{Suit.GetSymbol()}";
         }
 
         /// <summary>
@@ -131,7 +115,7 @@ namespace CardLibrary
         }
 
         /// <summary>
-        /// Returns a hash code for this card.
+        /// Returns a hash code for this card object.
         /// </summary>
         /// <returns>Returns a hash code for this object.</returns>
         public override int GetHashCode()

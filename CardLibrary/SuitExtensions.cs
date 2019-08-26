@@ -11,22 +11,20 @@ namespace CardLibrary
     /// </summary>
     public static class SuitExtensions
     {
-        public static string ExtendToSymbol(this Suit pSuit)
+        public static string GetSymbol(this Suit pSuit)
         {
-            string suitSymbol = String.Empty;
-
             switch (pSuit)
             {
                 case Suit.Club:
-                    return suitSymbol = "♣";
+                    return "♣";
                 case Suit.Diamond:
-                    return suitSymbol = "♦";
+                    return "♦";
                 case Suit.Heart:
-                    return suitSymbol = "♥";
+                    return "♥";
                 case Suit.Spade:
-                    return suitSymbol = "♠";
+                    return "♠";
                 default:
-                    return suitSymbol = "";
+                    return String.Empty;
             }
         }
     }

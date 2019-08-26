@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CardLibrary
 {
     /// <summary>
-    /// The Suit enum contains the definitions for the four card suits. 
+    /// Contains the suits of the cards.
     /// </summary>
     public enum Suit
     {

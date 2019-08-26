@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CardLibrary
 {
     /// <summary>
-    /// The Rank enum contains the definitions for the various card ranks.
+    /// Contains the ranks of the cards.
     /// </summary>
     public enum Rank
     {

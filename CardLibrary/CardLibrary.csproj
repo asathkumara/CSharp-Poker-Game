@@ -41,10 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Deck.cs" />
+    <Compile Include="Hand.cs" />
     <Compile Include="PokerHand.cs" />
     <Compile Include="PokerHandEvaluator.cs" />
     <Compile Include="PokerHandExtensions.cs" />
-    <Compile Include="PokerSession.cs" />
     <Compile Include="Rank.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="Card.cs" />
