@@ -20,7 +20,7 @@ namespace PokerSessionLibrary
         void CollectAnte();
         void CollectBets();
         void CollectTrades();
-        void CompareHands();
+        void AnnounceShowdown();
 
     }
 }

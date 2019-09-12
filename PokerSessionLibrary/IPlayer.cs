@@ -21,7 +21,7 @@ namespace PokerSessionLibrary
         
         decimal Ante();
         decimal Bet();
-        decimal Collect(decimal pAmount);
+        decimal Collect(decimal amount);
         List<Card> Discard();
         void RevealHand();
         

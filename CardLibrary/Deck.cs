@@ -28,21 +28,21 @@ namespace CardLibrary
             deck = GetDeck();
         }
         
-        public Card this[int pIndex]
+        public Card this[int index]
         {
             get
             {
-                if (pIndex < 0 || pIndex > deck.Length - 1)
+                if (index < 0 || index > deck.Length - 1)
                     throw new IndexOutOfRangeException("Index is out of range.");
 
-                return deck[pIndex];
+                return deck[index];
             }
             set
             {
-                if (pIndex < 0 || pIndex > deck.Length - 1)
+                if (index < 0 || index > deck.Length - 1)
                     throw new IndexOutOfRangeException("Index is out of range.");
 
-                deck[pIndex] = value;
+                deck[index] = value;
             }
         }
 
@@ -91,6 +91,6 @@ namespace CardLibrary
             return ((IEnumerable<Card>)deck).GetEnumerator();
         }
 
-    } // end of class Deck
+    } 
 
-} // end of namespace CardLibrary
+} 

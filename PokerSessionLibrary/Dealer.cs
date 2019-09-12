@@ -28,18 +28,18 @@ namespace PokerSessionLibrary
         public Dealer()
         {
             deck = new Deck();
-            topCardIndex = 0;
+            topCardIndex = deck.Size - 1;
         }
 
         /// <summary>
-        /// Prepare the deck.
+        /// Prepare for the session.
         /// </summary>
         public void Setup()
         {
             Console.WriteLine("Dealer: Setting up...\n");
             Table.Setup();
             topCardIndex = deck.Size - 1;
-            Shuffle();
+            ShuffleDeck();
             Thread.Sleep(4000);
         }
 
@@ -47,7 +47,7 @@ namespace PokerSessionLibrary
         /// Shuffles the deck. 
         /// </summary>
         /// <remarks>Employs Fisher-Yates shuffle.</remarks>
-        private void Shuffle()
+        private void ShuffleDeck()
         {
             for (int i = deck.Size - 1; i > 0; i--)
             {
@@ -57,8 +57,6 @@ namespace PokerSessionLibrary
                 deck[secondCardIndex] = temp;
             }
         }
-
-        
 
         /// <summary>
         /// Burns the top card from the deck. 
@@ -86,7 +84,7 @@ namespace PokerSessionLibrary
             decimal totalAntes = 0;
             Thread.Sleep(3000);
 
-            foreach (IPlayer player in Table.Players)
+            foreach (IPlayer player in Table)
             {
                 decimal currentAnte = player.Ante();
                 totalAntes += currentAnte;
@@ -94,16 +92,46 @@ namespace PokerSessionLibrary
                 Thread.Sleep(2000);
             }
 
-
-            Table.IncreasePot(totalAntes);
-            Console.WriteLine($"\nDealer: The pot is currently {Table.Pot:C2}.\n");
+            IncreasePot(totalAntes);
             Thread.Sleep(3000);
 
         }
 
         /// <summary>
-        /// Deal hands to the players.
+        /// Collects the player's bets.
         /// </summary>
+        public void CollectBets()
+        {
+            Console.WriteLine("Dealer: Place your bets...\n");
+            decimal totalBets = 0;
+            Thread.Sleep(4000);
+
+            foreach (IPlayer player in Table)
+            {
+                decimal currentBet = player.Bet();
+                totalBets += currentBet;
+                Console.WriteLine($"Dealer: {player} bet {currentBet:C2}.");
+                Thread.Sleep(2000);
+            }
+
+            IncreasePot(totalBets);
+            Thread.Sleep(2000);
+        }
+
+        /// <summary>
+        /// Increases the pot.
+        /// </summary>
+        /// <param name="amount">The amount to be added to the pot.</param>
+        private void IncreasePot(decimal amount)
+        {
+            Table.IncreasePot(amount);
+            Console.WriteLine($"\nDealer: The pot is currently {Table.Pot:C2}.\n");
+        }
+
+        /// <summary>
+        /// Deal the hands to the players.
+        /// </summary>
+        /// <remarks>A card is dealt to one player at a time until each player has a full hand.</remarks>
         public void DealHands()
         {
             Console.WriteLine("Dealer: Dealing cards....\n");
@@ -125,32 +153,6 @@ namespace PokerSessionLibrary
         }
 
         /// <summary>
-        /// Collects the player's bets.
-        /// </summary>
-        public void CollectBets()
-        {
-            Console.WriteLine("Dealer: Place your bets...\n");
-            decimal totalBets = 0;
-            Thread.Sleep(4000);
-
-            foreach (IPlayer player in Table.Players)
-            {
-                decimal currentBet = player.Bet();
-                totalBets += currentBet;
-                Console.WriteLine($"Dealer: {player} bet {currentBet:C2}.");
-                Thread.Sleep(2000);
-            }
-
-            
-
-            Table.IncreasePot(totalBets);
-            Console.WriteLine($"\nDealer: The pot is currently {Table.Pot:C2}.\n");
-            Thread.Sleep(2000);
-
-
-        }
-
-        /// <summary>
         /// Collects the player's trade-ins.
         /// </summary>
         public void CollectTrades()
@@ -160,11 +162,11 @@ namespace PokerSessionLibrary
 
             List<Card> trades = new List<Card>();
 
-            foreach (IPlayer player in Table.Players)
+            foreach (IPlayer player in Table)
             {
                 List<Card> currentTrades = player.Discard();
 
-                if (!(currentTrades == null || currentTrades.Count == 0))
+                if (!(currentTrades.Count == 0))
                     trades.AddRange(currentTrades);
 
                 Console.WriteLine($"Dealer: {player} traded in {currentTrades.Count} card(s).\n");
@@ -175,16 +177,16 @@ namespace PokerSessionLibrary
         }
 
         /// <summary>
-        /// Compares the player's hands at showdown.
+        /// Players reveal their hands to determine a winner.
         /// </summary>
-        public void CompareHands()
+        public void AnnounceShowdown()
         {
-            AnnounceShowdown();
+            Console.WriteLine("Dealer: It's time to showdown...\n");
+            Thread.Sleep(3000);
 
-            List<IPlayer> winners = new List<IPlayer>(Table.Players);
-            winners.Sort();
+            Showdown();
 
-            IPlayer winner = winners[winners.Count - 1];
+            IPlayer winner = CompareHands();
             string winningHand = winner.Hand.Rank.GetLowerCaseString();
             winner.Wins++;
 
@@ -195,27 +197,33 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Reveal every player's hand.
         /// </summary>
-        private void AnnounceShowdown()
+        private void Showdown()
         {
-            Console.WriteLine("Dealer: It's time to showdown...\n");
-            Thread.Sleep(3000);
-
-            foreach (IPlayer player in Table.Players)
+            foreach (IPlayer player in Table)
             {
                 player.RevealHand();
                 Console.WriteLine();
                 Thread.Sleep(2000);
             }
         }
-        
+
+        /// <summary>
+        /// Determines the winner.
+        /// </summary>
+        /// <returns>The player who had the better hand.</returns>
+        public IPlayer CompareHands()
+        {
+            return Table.Players.OrderByDescending(player => player.Hand).First();
+        }
+
         /// <summary>
         /// Distributes the pot to the winner.
         /// </summary>
-        /// <param name="pPlayer">The player who won the hand.</param>
-        /// <returns>Returns the amount that was distributed</returns>
-        private decimal DistributePot(IPlayer pPlayer)
+        /// <param name="player">The player who won the hand.</param>
+        /// <returns>Returns the amount that was distributed.</returns>
+        private decimal DistributePot(IPlayer player)
         {
-            return pPlayer.Collect(Table.ClearPot());
+            return player.Collect(Table.ClearPot());
         }
 
     }

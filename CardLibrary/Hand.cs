@@ -31,6 +31,7 @@ namespace CardLibrary
         public Card HighCard
         {
             get { return hand[4]; }
+            set { hand[4] = value; }
         }
 
         /// <summary>
@@ -41,21 +42,31 @@ namespace CardLibrary
             hand = new Card[MaxHandSize];
         }
 
-        public Card this[int pIndex]
+        /// <summary>
+        /// Constructs a hand with the given cards.
+        /// </summary>
+        /// <param name="cards">The cards to be placed in the hand.</param>
+        public Hand(Card[] cards) : this()
+        {
+            for (int i = 0; i < hand.Length; i++)
+                hand[i] = cards[i];
+        }
+
+        public Card this[int index]
         {
             get
             {
-                if (pIndex < 0 || pIndex > hand.Length - 1)
+                if (index < 0 || index > hand.Length - 1)
                     throw new IndexOutOfRangeException("Index out of range");
 
-                return hand[pIndex];
+                return hand[index];
             }
             set
             {
-                if (pIndex < 0 || pIndex > hand.Length - 1)
+                if (index < 0 || index > hand.Length - 1)
                     throw new IndexOutOfRangeException("Index out of range");
 
-                hand[pIndex] = value;
+                hand[index] = value;
             }
         }
 
@@ -79,27 +90,27 @@ namespace CardLibrary
         /// <summary>
         /// Checks a hand object and another object for equality.
         /// </summary>
-        /// <param name="pObject">The other object to be compared.</param>
+        /// <param name="other">The other object to be compared.</param>
         /// <returns>Returns true if the instances are equal; returns false otherwise.</returns>
-        public override bool Equals(object pObject)
+        public override bool Equals(object other)
         {
-            return this.Equals(pObject as Hand);
+            return this.Equals(other as Hand);
         }
 
         /// <summary>
         /// Checks two hand objects for equality.
         /// </summary>
-        /// <param name="pOther">The other hand object to be compared.
-        /// <returns>Returns true if the hand instances are equal; returns false otherwise.</returns>
-        public bool Equals(Hand pOther)
+        /// <param name="other">The other hand object to be compared.
+        /// <returns>Returns true if the hand instances are equal or if the hand rankings are the same; returns false otherwise.</returns>
+        public bool Equals(Hand other)
         {
-            if (ReferenceEquals(null, pOther))
+            if (ReferenceEquals(null, other))
                 return false;
 
-            if (ReferenceEquals(this, pOther))
+            if (ReferenceEquals(this, other))
                 return true;
 
-            return this.Rank.Equals(pOther.Rank);
+            return this.Rank.Equals(other.Rank);
         }
 
         /// <summary>
@@ -118,16 +129,16 @@ namespace CardLibrary
         /// Compares two hand objects.
         /// </summary>
         /// <remarks>Compares the hand by their rank, and in the event of a tie, their high card..</remarks>
-        /// <param name="pOther">The other hand object to be compared.</param>
+        /// <param name="other">The other hand object to be compared.</param>
         /// <returns>
         /// Returns an indication of their relative values.
         /// </returns>
-        public int CompareTo(Hand pOther)
+        public int CompareTo(Hand other)
         {
-            if (this.Equals(pOther))
-                return this.HighCard.CompareTo(pOther.HighCard);
+            if (this.Equals(other))
+                return this.HighCard.CompareTo(other.HighCard);
 
-            return this.Rank.CompareTo(pOther.Rank);
+            return this.Rank.CompareTo(other.Rank);
         }
 
         // <summary>

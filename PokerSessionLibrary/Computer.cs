@@ -32,12 +32,12 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Constructs a computer player with a given name and initial stack.
         /// </summary>
-        /// <param name="pName">The name of the player.</param>
-        /// <param name="pStack">The starting stack for the player.</param>
-        public Computer(string pName, decimal pStack) : this()
+        /// <param name="name">The name of the player.</param>
+        /// <param name="stack">The starting stack for the player.</param>
+        public Computer(string name, decimal stack) : this()
         {
-            Name = pName;
-            Stack = pStack;
+            Name = name;
+            Stack = stack;
         }
 
         /// <summary>
@@ -99,17 +99,17 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Collect prize money.
         /// </summary>
-        /// <param name="pAmount">The amount to be collected.</param>
+        /// <param name="amount">The amount to be collected.</param>
         /// <returns>Returns the amount that was collected.</returns>
         /// <exception cref="ArgumentException">When the amount to be collected is negative or 0.</exception>
-        public decimal Collect(decimal pAmount)
+        public decimal Collect(decimal amount)
         {
-            if (pAmount < 1)
+            if (amount < 1)
                 throw new ArgumentException("Stack increase cannot be negative.");
 
-            this.Stack += pAmount;
+            this.Stack += amount;
 
-            return pAmount;
+            return amount;
         }
 
         /// <summary>
@@ -119,27 +119,32 @@ namespace PokerSessionLibrary
         public List<Card> Discard()
         {
             List<Card> discards = new List<Card>();
-            Card discarded = null;
             int currentDiscards = 0;
-
 
             while (Hand.Rank == PokerHand.HighCard && currentDiscards < House.MaxDiscards)
             {
-                int lowestCardIndex = 0;
-                int lowestCardValue = (int)Hand[lowestCardIndex].Rank;
+                Hand.Sort();
+                int discardIndex = GetDiscardIndex();
+                Card discarded = Hand[discardIndex];
+                Hand[discardIndex] = Table.Dealer.DealCard();
 
-                if (lowestCardValue <= 7)
-                {
-                    discarded = Hand[lowestCardIndex];
-                    Hand[lowestCardIndex] = Table.Dealer.DealCard();
-                    discards.Add(discarded);
-                    Hand.Sort();
-                }
-
+                discards.Add(discarded);
                 currentDiscards++;
             }
 
             return discards;     
+        }
+
+        /// <summary>
+        /// Retrieves the index of the card to be discarded.
+        /// </summary>
+        /// <returns>Returns the index of highest card if its rank is less than Ten; returns the index of the lowest card otherwise.</returns>
+        private int GetDiscardIndex()
+        {
+            if ((int)Hand.HighCard.Rank < (int)Rank.Ten)
+                return Hand.ToList().IndexOf(Hand.HighCard);
+
+            return Hand.ToList().IndexOf(Hand.Min());
         }
 
         /// <summary>

@@ -30,12 +30,12 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Constructs a new player with a given name and initial stack.
         /// </summary>
-        /// <param name="pName">The name of the player.</param>
-        /// <param name="pStack">The starting stack for the player.</param>
-        public Player(string pName, decimal pStack) : this()
+        /// <param name="name">The name of the player.</param>
+        /// <param name="stack">The starting stack for the player.</param>
+        public Player(string name, decimal stack) : this()
         {
-            Name = pName;
-            Stack = House.InitialStack;
+            Name = name;
+            Stack = stack;
         }
 
         /// <summary>
@@ -96,17 +96,17 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Collect prize money.
         /// </summary>
-        /// <param name="pAmount">The amount to be collected.</param>
+        /// <param name="amount">The amount to be collected.</param>
         /// <returns>Returns the amount that was collected.</returns>
         /// <exception cref="ArgumentException">When the amount to be collected is negative or 0.</exception>
-        public decimal Collect(decimal pAmount)
+        public decimal Collect(decimal amount)
         {
-            if (pAmount < 1)
+            if (amount < 1)
                 throw new ArgumentException("Stack increase cannot be negative.");
 
-            this.Stack += pAmount;
+            this.Stack += amount;
 
-            return pAmount;
+            return amount;
         }
 
         /// <summary>
@@ -116,11 +116,12 @@ namespace PokerSessionLibrary
         public List<Card> Discard()
         {
             List<Card> discards = new List<Card>();
-            Card discarded = null;
-
+            Card discarded;
             
             RevealHand();
-            Console.WriteLine($"\n{this.Name}, enter the indices of the cards you wish to discard: ");
+            Console.WriteLine(
+                $"\n{this.Name}, enter the positions of the cards you wish to discard (1 - 5):"
+                );
 
             int[] discardIndices = GetDiscards();
 
@@ -150,34 +151,29 @@ namespace PokerSessionLibrary
             Console.WriteLine();
 
             int[] indices = desiredIndices
-                .Select((index) =>
-                {
-                    int validIndex;
+                .Select(
+                    (input) => {
+                        Int32.TryParse(input, out int validIndex);
 
-                    Int32.TryParse(index, out validIndex);
+                        if (validIndex >= 1 && validIndex <= House.MaxHandSize)
+                            return validIndex - 1;
 
-                    if (validIndex >= 1 && validIndex <= 5)
-                        return validIndex - 1;
-
-                    else
-                        return -1;
-                }
-                ).ToArray();
-
-            if (indices.Length > House.MaxDiscards)
-                Array.Resize(ref indices, House.MaxDiscards);
+                        else
+                            return -1;
+                    }
+                ).Where(index => index != -1).Take(House.MaxDiscards).ToArray();
 
             return indices;
         }
 
         /// <summary>
-        /// 
+        /// Checks whether the given index is valid. 
         /// </summary>
-        /// <param name="currentIndex"></param>
-        /// <returns></returns>
-        private bool IsValidIndex(int currentIndex)
+        /// <param name="index">The index to be checked.</param>
+        /// <returns>Returns true if the argument is a valid index; returns false otherwise.</returns>
+        private bool IsValidIndex(int index)
         {
-            return currentIndex >= 0 && currentIndex <= Hand.Size - 1;
+            return index >= 0 && index <= House.MaxHandSize - 1;
         }
 
         /// <summary>
@@ -192,11 +188,11 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Compares two players.
         /// </summary>
-        /// <param name="pOther">The other player to be compared.</param>
+        /// <param name="other">The other player to be compared.</param>
         /// <returns>Returns an indication of the relative values of the player's hands.</returns>
-        public int CompareTo(IPlayer pOther)
+        public int CompareTo(IPlayer other)
         {
-            return this.Hand.CompareTo(pOther.Hand);
+            return this.Hand.CompareTo(other.Hand);
         }
     }
 }

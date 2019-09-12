@@ -4,18 +4,20 @@ using System.Collections.Generic;
 
 namespace CardLibrary.UnitTests
 {
-
+    /// <summary>
+    /// Contains tests for the PokerHandEvaluator class.
+    /// </summary>
     [TestFixture]
     public class PokerHandEvaluatorTests
     {
         /// <summary>
-        /// Retrieves a test hand based on the poker hand type.
+        /// Retrieves test hand(s) based on the poker hand type.
         /// </summary>
-        /// <param name="pPokerHand">The type of poker hand.</param>
-        /// <returns>A SuperCard array that is initialized with cards matching the poker hand conditions.</returns>
-        static IEnumerable<Card[]> GetTestHand(PokerHand pPokerHand)
+        /// <param name="pokerHand">The type of poker hand.</param>
+        /// <returns>Poker hand(s) corresponding to the argument.</returns>
+        static IEnumerable<Card[]> GetTestHand(PokerHand pokerHand)
         {
-            if (pPokerHand == PokerHand.Flush)
+            if (pokerHand == PokerHand.Flush)
             {
                 yield return new Card[]
                 {
@@ -54,7 +56,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.Straight)
+            if (pokerHand == PokerHand.Straight)
             {
                 yield return new Card[]
                 {
@@ -93,7 +95,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.StraightFlush)
+            if (pokerHand == PokerHand.StraightFlush)
             {
                 yield return new Card[]
                 {
@@ -132,7 +134,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.RoyalFlush)
+            if (pokerHand == PokerHand.RoyalFlush)
             {
                 yield return new Card[]
                 {
@@ -171,7 +173,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.FullHouse)
+            if (pokerHand == PokerHand.FullHouse)
             {
                 yield return new Card[]
                 {
@@ -210,7 +212,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.FourOfAKind)
+            if (pokerHand == PokerHand.FourOfAKind)
             {
                 yield return new Card[]
                 {
@@ -249,7 +251,7 @@ namespace CardLibrary.UnitTests
                };
             }
 
-            if (pPokerHand == PokerHand.ThreeOfAKind)
+            if (pokerHand == PokerHand.ThreeOfAKind)
             {
                 yield return new Card[]
                 {          
@@ -297,7 +299,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.TwoPair)
+            if (pokerHand == PokerHand.TwoPair)
             {
                 yield return new Card[]
                 {
@@ -327,7 +329,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.OnePair)
+            if (pokerHand == PokerHand.OnePair)
             {
                 yield return new Card[]
                 {
@@ -366,7 +368,7 @@ namespace CardLibrary.UnitTests
                 };
             }
 
-            if (pPokerHand == PokerHand.HighCard)
+            if (pokerHand == PokerHand.HighCard)
             {
                 yield return new Card[]
                 {
@@ -407,175 +409,175 @@ namespace CardLibrary.UnitTests
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Flush })]
-        public void Flush_IsFlush_ReturnsTrue(Card[] pTestHand)
+        public void Flush_IsFlush_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsFlush(pTestHand));
+            Assert.That(PokerHandEvaluator.IsFlush(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Straight })]
-        public void Straight_IsStraight_ReturnsTrue(Card[] pTestHand)
+        public void Straight_IsStraight_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsStraight(pTestHand));
+            Assert.That(PokerHandEvaluator.IsStraight(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.StraightFlush })]
-        public void StraightFlush_IsStraightFlush_ReturnsTrue(Card[] pTestHand)
+        public void StraightFlush_IsStraightFlush_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsStraightFlush(pTestHand));
+            Assert.That(PokerHandEvaluator.IsStraightFlush(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.RoyalFlush })]
-        public void RoyalFlush_IsRoyalFlush_ReturnsTrue(Card[] pTestHand)
+        public void RoyalFlush_IsRoyalFlush_ReturnsTrue(Card[] testHand)
         {
-            bool result = PokerHandEvaluator.IsRoyalFlush(pTestHand);
+            bool result = PokerHandEvaluator.IsRoyalFlush(testHand);
             Assert.That(result == true);
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FullHouse })]
-        public void FullHouse_IsFullHouse_ReturnsTrue(Card[] pTestHand)
+        public void FullHouse_IsFullHouse_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsFullHouse(pTestHand));
+            Assert.That(PokerHandEvaluator.IsFullHouse(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
-        public void FourOfAKind_IsFourOfAKind_ReturnsTrue(Card[] pTestHand)
+        public void FourOfAKind_IsFourOfAKind_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsFourOfAKind(pTestHand));
+            Assert.That(PokerHandEvaluator.IsFourOfAKind(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
-        public void ThreeOfAKind_IsThreeOfAKind_ReturnsTrue(Card[] pTestHand)
+        public void ThreeOfAKind_IsThreeOfAKind_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsThreeOfAKind(pTestHand));
+            Assert.That(PokerHandEvaluator.IsThreeOfAKind(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
-        public void ThreeOfAKind_IsBetterThan_ReturnsTrue(Card[] pTestHand)
+        public void ThreeOfAKind_IsBetterThan_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(!PokerHandEvaluator.IsThreeOfAKind(pTestHand));
+            Assert.That(!PokerHandEvaluator.IsThreeOfAKind(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.TwoPair })]
-        public void TwoPair_IsTwoPair_ReturnsTrue(Card[] pTestHand)
+        public void TwoPair_IsTwoPair_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsTwoPair(pTestHand));
+            Assert.That(PokerHandEvaluator.IsTwoPair(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
-        public void TwoPair_IsBetterThan_ReturnsTrue(Card[] pTestHand)
+        public void TwoPair_IsBetterThan_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(!PokerHandEvaluator.IsTwoPair(pTestHand));
+            Assert.That(!PokerHandEvaluator.IsTwoPair(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.OnePair })]
-        public void OnePair_IsOnePair_ReturnsTrue(Card[] pTestHand)
+        public void OnePair_IsOnePair_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(PokerHandEvaluator.IsOnePair(pTestHand));
+            Assert.That(PokerHandEvaluator.IsOnePair(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.TwoPair })]
-        public void OnePair_IsBetterThan_ReturnsTrue(Card[] pTestHand)
+        public void OnePair_IsBetterThan_ReturnsTrue(Card[] testHand)
         {
-            Assert.That(!PokerHandEvaluator.IsOnePair(pTestHand));
+            Assert.That(!PokerHandEvaluator.IsOnePair(testHand));
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Flush })]
-        public void EvaluatePokerHand_AssignsFlush_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsFlush_ReturnsTrue(Card[] testHand)
         {
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.Flush);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.Straight })]
-        public void EvaluatePokerHand_AssignsStraight_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsStraight_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.Straight);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.StraightFlush })]
-        public void EvaluatePokerHand_AssignsStraightFlush_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsStraightFlush_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.StraightFlush);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.RoyalFlush })]
-        public void EvaluatePokerHand_AssignsRoyalFlush_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsRoyalFlush_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.RoyalFlush);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FullHouse })]
-        public void EvaluatePokerHand_AssignsFullHouse_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsFullHouse_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.FullHouse);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.FourOfAKind })]
-        public void EvaluatePokerHand_AssignsFourOfAKind_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsFourOfAKind_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.FourOfAKind);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.ThreeOfAKind })]
-        public void EvaluatePokerHand_AssignsThreeOfAKind_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsThreeOfAKind_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.ThreeOfAKind);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.TwoPair })]
-        public void EvaluatePokerHand_AssignsTwoPair_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsTwoPair_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.TwoPair);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.OnePair })]
-        public void EvaluatePokerHand_AssignsOnePair_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsOnePair_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.OnePair);
 
         }
 
         [TestCaseSource(nameof(GetTestHand), new object[] { PokerHand.HighCard })]
-        public void EvaluatePokerHand_AssignsHighCard_ReturnsTrue(Card[] pTesthand)
+        public void EvaluatePokerHand_AssignsHighCard_ReturnsTrue(Card[] testHand)
         {
 
-            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(pTesthand);
+            PokerHand result = PokerHandEvaluator.EvaluatePokerHand(testHand);
 
             Assert.That(result == PokerHand.HighCard);
 

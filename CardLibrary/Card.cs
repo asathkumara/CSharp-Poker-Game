@@ -18,12 +18,12 @@ namespace CardLibrary
         /// <summary>
         /// Constructs a playing card based on the given suit and rank.
         /// </summary>
-        /// <param name="pSuit">The suit of the playing card.</param>
-        /// <param name="pRank">The rank of the playing card.</param>
-        public Card(Suit pSuit, Rank pRank)
+        /// <param name="suit">The suit of the playing card.</param>
+        /// <param name="rank">The rank of the playing card.</param>
+        public Card(Suit suit, Rank rank)
         {
-            Suit = pSuit;
-            Rank = pRank;
+            Suit = suit;
+            Rank = rank;
         }
 
         /// <summary>
@@ -68,13 +68,13 @@ namespace CardLibrary
         /// Compares two card objects.
         /// </summary>
         /// <remarks>Compares the cards by their rank.</remarks>
-        /// <param name="pOther">The other card object to be compared.</param>
+        /// <param name="other">The other card object to be compared.</param>
         /// <returns>
         /// Returns an indication of their relative values.
         /// </returns>
-        public int CompareTo(Card pOther)
+        public int CompareTo(Card other)
         {
-            return this.Rank.CompareTo(pOther.Rank);
+            return this.Rank.CompareTo(other.Rank);
         }
 
         /// <summary>
@@ -89,29 +89,29 @@ namespace CardLibrary
         /// <summary>
         /// Checks two card objects for equality.
         /// </summary>
-        /// <param name="pOther">The other card object to be compared.
+        /// <param name="other">The other card object to be compared.
         /// <returns>Returns true if the card instances are equal; returns false otherwise.</returns>
-        public bool Equals(Card pOther)
+        public bool Equals(Card other)
         {
-            if (ReferenceEquals(null, pOther))
+            if (ReferenceEquals(null, other))
                 return false;
 
-            if (ReferenceEquals(this, pOther))
+            if (ReferenceEquals(this, other))
                 return true;
 
-            return this.Suit.Equals(pOther.Suit) &&
-                this.Rank.Equals(pOther.Rank);
+            return this.Suit.Equals(other.Suit) &&
+                this.Rank.Equals(other.Rank);
 
         }
 
         /// <summary>
         /// Checks a card object and another object for equality.
         /// </summary>
-        /// <param name="pObject">The other object to be compared.</param>
+        /// <param name="other">The other object to be compared.</param>
         /// <returns>Returns true if the instances are equal; returns false otherwise.</returns>
-        public override bool Equals(object pObject)
+        public override bool Equals(object other)
         {
-            return this.Equals(pObject as Card);
+            return this.Equals(other as Card);
         }
 
         /// <summary>

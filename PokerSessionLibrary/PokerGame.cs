@@ -16,19 +16,19 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Constructs a poker game with the given players and dealer.
         /// </summary>
-        /// <param name="pPlayers">The players of the game.</param>
-        /// <param name="pDealer">The dealer of the game.</param>
-        public PokerGame(List<IPlayer> pPlayers, IDealer pDealer)
+        /// <param name="players">The players of the game.</param>
+        /// <param name="dealer">The dealer of the game.</param>
+        public PokerGame(List<IPlayer> players, IDealer dealer)
         {
-            Table = new PokerTable(pPlayers, pDealer);
+            Table = new PokerTable(players, dealer);
         }
 
         /// <summary>
-        /// Starts the game.
+        /// Starts the poker game.
         /// </summary>
         public void Start()
         {
-            IPlayer human = Table.Players.First(player => player.GetType() == typeof(Player));
+            IPlayer humanPlayer = Table.Players.First(player => player.GetType() == typeof(Player));
 
             while (true)
             {
@@ -38,9 +38,9 @@ namespace PokerSessionLibrary
                 Table.Dealer.CollectBets();
                 Table.Dealer.CollectTrades();
                 Table.Dealer.CollectBets();
-                Table.Dealer.CompareHands();
+                Table.Dealer.AnnounceShowdown();
 
-                Console.WriteLine($"You have {human.Stack:C2} left");
+                Console.WriteLine($"You have {humanPlayer.Stack:C2} left");
                 Console.Write("Would you like to play another hand? (Y/N): ");
 
                 if (Console.ReadLine().Equals("N", StringComparison.CurrentCultureIgnoreCase))
@@ -54,12 +54,20 @@ namespace PokerSessionLibrary
         }
 
         /// <summary>
-        /// Ends the game.
+        /// Ends the poker game.
         /// </summary>
         public void End()
         {
             Console.Clear();
+            ShowStatistics();
+            Console.WriteLine("Thank you for playing...");
+        }
 
+        /// <summary>
+        /// Shows the statistics for the game.
+        /// </summary>
+        private void ShowStatistics()
+        {
             int totalHands = Table.Players.Sum(player => player.Wins);
 
             foreach (IPlayer player in Table.Players)
@@ -67,9 +75,6 @@ namespace PokerSessionLibrary
                 Console.WriteLine($"{player} won {player.Wins} hand(s) out of {totalHands} hand(s).");
                 Console.WriteLine($"Their total winnings this game were {player.Stack:C2}.\n\n");
             }
-
-            Console.WriteLine("Thank you for playing...");
         }
-
     }
 }

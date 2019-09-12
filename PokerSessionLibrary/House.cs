@@ -30,8 +30,8 @@ namespace PokerSessionLibrary
             sb.Append("+----------------------------------------------------------------------------------------+\n");
             sb.Append("|                                     Introduction                                       |\n");
             sb.Append("+----------------------------------------------------------------------------------------+\n");
-            sb.Append("\nThis game is a stripped down variant of 5 card draw.\n");
-            sb.Append($"And as of now, only {MaxPlayers} players can participate, one human player and one computer player.\n\n");
+            sb.Append("\nThis game is based off 5 card draw.\n");
+            sb.Append($"And as of now, only {MaxPlayers} players can participate: one human player and one computer player.\n\n");
             sb.Append("If you want to stop playing, type N when prompted to after the round has concluded.\n\n");
 
             sb.Append("+----------------------------------------------------------------------------------------+\n");
@@ -43,7 +43,8 @@ namespace PokerSessionLibrary
                 $"2) During the betting round, each player bets {MaxBet:C2} which is added to the pot.\n\n"
                 );
             sb.Append(
-                $"3) Each player has the chance to trade in up to {MaxDiscards} of their cards.\n\n"
+                $"3) Each player has the chance to trade in up to {MaxDiscards} of their cards." +
+                $"\n   When prompted, enter the positions of the cards (separated by a space) you wish to discard.\n\n"
                 );
             sb.Append(
                 $"4) After player's have traded in their cards, they reveal their hands after another betting round.\n\n");
@@ -59,7 +60,7 @@ namespace PokerSessionLibrary
                 );
 
             Console.WriteLine(sb.ToString());
-            Console.Write("\n\nPress any key to play the first hand...");
+            Console.Write("\n\nPress any key to play the first hand... ");
             Console.ReadKey();
             Console.Clear();
         }

@@ -38,38 +38,42 @@ namespace PokerSessionLibrary
         /// </summary>
         private PokerTable()
         {
-            Players = new List<IPlayer>(House.MaxPlayers);
+            Players = new List<IPlayer>();
             muck = new List<Card>();
         }
 
         /// <summary>
         /// Constructs a poker table with the given players and dealers.
         /// </summary>
-        /// <param name="pPlayers">The players to be seated.</param>
-        /// <param name="pDealer">The dealer to be seated.</param>
-        public PokerTable(List<IPlayer> pPlayers, IDealer pDealer) : this()
+        /// <param name="players">The players to be seated.</param>
+        /// <param name="dealer">The dealer to be seated.</param>
+        /// <remarks>
+        /// If the number of players exceeds the maximum allowed, only the maximum number of players
+        /// will be seated.
+        /// </remarks>
+        public PokerTable(List<IPlayer> players, IDealer dealer) : this()
         {
-            SeatDealer(pDealer);
-            SeatPlayers(pPlayers);
+            SeatDealer(dealer);
+            SeatPlayers(players.Take(House.MaxPlayers).ToList());
         }
 
         /// <summary>
         /// Seats the dealer at the table.
         /// </summary>
-        /// <param name="pDealer">The dealer to be seated.</param>
-        public void SeatDealer(IDealer pDealer)
+        /// <param name="dealer">The dealer to be seated.</param>
+        public void SeatDealer(IDealer dealer)
         {
-            Dealer = pDealer;
+            Dealer = dealer;
             Dealer.Table = this;
         }
         
         /// <summary>
         /// Seats the players at the table.
         /// </summary>
-        /// <param name="pPlayers">The players to be seated.</param>
-        public void SeatPlayers(List<IPlayer> pPlayers)
+        /// <param name="players">The players to be seated.</param>
+        public void SeatPlayers(List<IPlayer> players)
         {
-            Players.AddRange(pPlayers);
+            Players.AddRange(players);
 
             foreach (IPlayer player in this)
                 player.Table = this;
@@ -88,31 +92,31 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Adds a card to the muck.
         /// </summary>
-        /// <param name="pCard">The card to be discarded.</param>
-        public void Muck(Card pCard)
+        /// <param name="card">The card to be discarded.</param>
+        public void Muck(Card card)
         {
-            muck.Add(pCard);
+            muck.Add(card);
         }
 
         /// <summary>
         /// Adds cards to the muck.
         /// </summary>
-        /// <param name="pCards">The cards to be added.</param>
-        public void Muck(List<Card> pCards)
+        /// <param name="cards">The cards to be added.</param>
+        public void Muck(List<Card> cards)
         {
-            muck.AddRange(pCards);
+            muck.AddRange(cards);
         }
 
         /// <summary>
         /// Increases the current pot.
         /// </summary>
-        /// <param name="pAmount">The amount to be added to the pot.</param>
-        public void IncreasePot(decimal pAmount)
+        /// <param name="amount">The amount to be added to the pot.</param>
+        public void IncreasePot(decimal amount)
         {
-            if (pAmount < 1)
+            if (amount < 1)
                 throw new ArgumentException("Pot increase cannot be negative.");
 
-            this.Pot += pAmount;
+            this.Pot += amount;
 
         }
 
@@ -135,11 +139,19 @@ namespace PokerSessionLibrary
             muck.Clear();
         }
 
+        /// <summary>
+        /// Returns a enumerator that iterates through the players at the table.
+        /// </summary>
+        /// <returns>An enumerator that iterates through players at the table.</returns>
         public IEnumerator<IPlayer> GetEnumerator()
         {
             return ((IEnumerable<IPlayer>)Players).GetEnumerator();
         }
 
+        /// <summary>
+        /// Returns a enumerator that iterates through the players at the table.
+        /// </summary>
+        /// <returns>An enumerator that iterates through players at the table.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<IPlayer>)Players).GetEnumerator();

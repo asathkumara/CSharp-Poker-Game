@@ -14,13 +14,13 @@ namespace CardLibrary
         /// <summary>
         /// Returns a string representation of the PokerHand rank.
         /// </summary>
-        /// <param name="pPokerHand">The PokerHand rank.</param>
+        /// <param name="pokerHand">The PokerHand rank.</param>
         /// <returns>Returns a string representation of the PokerHand rank.</returns>
-        public static string GetString(this PokerHand pPokerHand)
+        public static string GetString(this PokerHand pokerHand)
         {
             string output = String.Empty;
 
-            switch (pPokerHand)
+            switch (pokerHand)
             {
                 case PokerHand.OnePair:
                     output = "One Pair";
@@ -60,11 +60,11 @@ namespace CardLibrary
         /// <summary>
         /// Returns a lowercase string representation of the PokerHand rank.
         /// </summary>
-        /// <param name="pPokerHand">The PokerHand rank.</param>
+        /// <param name="pokerHand">The PokerHand rank.</param>
         /// <returns>Returns a lowercase string representation of the PokerHand rank.</returns>
-        public static string GetLowerCaseString(this PokerHand pPokerHand)
+        public static string GetLowerCaseString(this PokerHand pokerHand)
         {
-            return pPokerHand.GetString().ToLower();
+            return pokerHand.GetString().ToLower();
         }
     }
 

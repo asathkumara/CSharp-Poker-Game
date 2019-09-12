@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PokerSessionLibrary
 {
+    /// <summary>
+    /// Contains the types of players.
+    /// </summary>
     public enum PlayerType
     {
         Human = 0,

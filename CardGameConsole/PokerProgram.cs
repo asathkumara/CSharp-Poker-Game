@@ -16,7 +16,6 @@ namespace CardGameConsole
     {   
         static void Main(string[] args)
         {
-            // Five card draw 
             House.DisplayHouseRules();
 
             IDealer dealer = DealerFactory.CreateDealer();
@@ -24,11 +23,11 @@ namespace CardGameConsole
             IPlayer player2 = PlayerFactory.CreatePlayer(PlayerType.Human);
             List<IPlayer> players = new List<IPlayer>() { player1, player2 };
             PokerGame pokerGame = PokerGameFactory.CreateGame(players, dealer);
-
             pokerGame.Start();
+
             Console.ReadLine();
         } 
 
-    } // end of class Program
+    } 
 
-} // end of namespace CardGameConsole
+} 

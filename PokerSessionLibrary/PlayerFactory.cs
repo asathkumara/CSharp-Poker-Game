@@ -17,16 +17,18 @@ namespace PokerSessionLibrary
         /// <summary>
         /// Creates a player of the given type.
         /// </summary>
-        /// <param name="pPlayerType">The type of player to be created.</param>
+        /// <param name="playerType">The type of player to be created.</param>
         /// <returns>Returns a player of the argument's type.</returns>
-        public static IPlayer CreatePlayer(PlayerType pPlayerType)
+        public static IPlayer CreatePlayer(PlayerType playerType)
         {
-            switch (pPlayerType)
+            string playerName = $"Player {playersCreated++}";
+
+            switch (playerType)
             {
                 case PlayerType.Human:
-                    return new Player($"Player {playersCreated++}", House.InitialStack);
+                    return new Player(playerName, House.InitialStack);
                 case PlayerType.Computer:
-                    return new Computer($"Player {playersCreated++}", House.InitialStack);
+                    return new Computer(playerName, House.InitialStack);
                 default:
                     throw new InvalidEnumArgumentException("Invalid player type, could not construct player.");
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,9 @@ namespace CardLibrary
     /// </summary>
     public static class SuitExtensions
     {
-        public static string GetSymbol(this Suit pSuit)
+        public static string GetSymbol(this Suit suit)
         {
-            switch (pSuit)
+            switch (suit)
             {
                 case Suit.Club:
                     return "♣";
@@ -24,7 +25,7 @@ namespace CardLibrary
                 case Suit.Spade:
                     return "♠";
                 default:
-                    return String.Empty;
+                    throw new InvalidEnumArgumentException("Invalid enum");
             }
         }
     }
