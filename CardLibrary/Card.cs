@@ -41,7 +41,7 @@ namespace CardLibrary
         /// </summary>
         private void SetDisplayColor()
         {
-            switch (Suit)
+            switch (this.Suit)
             {
                 case Suit.Club:
                     Console.BackgroundColor = ConsoleColor.White;
@@ -83,7 +83,7 @@ namespace CardLibrary
         /// <returns>Returns a readable string which contains the rank, suit and symbol of the card.</returns>
         public override string ToString()
         {
-            return $"{Rank} of {Suit}s".PadRight(18) + $"{Suit.GetSymbol()}";
+            return $"{this.Rank} of {this.Suit}s".PadRight(18) + $"{this.Suit.GetSymbol()}";
         }
 
         /// <summary>

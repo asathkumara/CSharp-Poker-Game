@@ -123,7 +123,7 @@ namespace PokerSessionLibrary
                 $"\n{this.Name}, enter the positions of the cards you wish to discard (1 - 5):"
                 );
 
-            int[] discardIndices = GetDiscards();
+            int[] discardIndices = GetDiscardIndices();
 
             for (int i = 0; i < discardIndices.Length; i++)
             {
@@ -145,7 +145,7 @@ namespace PokerSessionLibrary
         /// Gets discard indices from the user.
         /// </summary>
         /// <returns>An array containing the discard indices.</returns>
-        private int[] GetDiscards()
+        private int[] GetDiscardIndices()
         {
             string[] desiredIndices = Console.ReadLine().Split(new char[0]);
             Console.WriteLine();

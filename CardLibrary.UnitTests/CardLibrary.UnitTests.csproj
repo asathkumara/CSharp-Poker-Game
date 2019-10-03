@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeckTests.cs" />
+    <Compile Include="HandTests.cs" />
     <Compile Include="PokerHandEvaluatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
