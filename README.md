@@ -4,7 +4,7 @@ This poker game started out as a final project for my object-oriented programmin
 I'm still working on additional refactorings.
 
 ## Playing The Game 
-To play the game you need to [download]() the release, extract it and run the setup.exe file. 
+To play the game you need to [download](https://github.com/asathkumara/CSharp-Poker-Game/releases/download/v3.0/CSharp-Poker-Game-v3.0.zip) the release, extract it and run the setup.exe file. 
 
 ![image](https://user-images.githubusercontent.com/28933557/64801863-01ebdc00-d5a7-11e9-86a3-94f774549806.png)
 
