@@ -23,7 +23,6 @@ namespace PokerSessionLibrary
         /// </summary>
         public static void DisplayHouseRules()
         {
-            Console.Title = "C# Poker Game v3";
             SetMenuColor();
 
             StringBuilder sb = new StringBuilder();
@@ -32,7 +31,7 @@ namespace PokerSessionLibrary
             sb.Append("+----------------------------------------------------------------------------------------+\n");
             sb.Append("\nThis game is based off 5 card draw.\n");
             sb.Append($"And as of now, only {MaxPlayers} players can participate: one human player and one computer player.\n\n");
-            sb.Append("If you want to stop playing, type N when prompted to after the round has concluded.\n\n");
+            sb.Append("If you want to stop playing, type N when prompted to after the game has concluded.\n\n");
 
             sb.Append("+----------------------------------------------------------------------------------------+\n");
             sb.Append("|                                      House Rules                                       |\n");
@@ -69,12 +68,10 @@ namespace PokerSessionLibrary
         /// Sets the console's foreground and background colors for the menu.
         /// </summary>
         private static void SetMenuColor()
-        {
-            
+        {  
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
-
         }
 
         /// <summary>

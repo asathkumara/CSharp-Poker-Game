@@ -164,6 +164,9 @@ namespace PokerSessionLibrary
 
             foreach (IPlayer player in Table)
             {
+                if (IsHumanPlayer(player))
+                    Console.WriteLine("Dealer: Please enter the positions of the cards you wish to discard (1 - 5):\n");
+
                 List<Card> currentTrades = player.Discard();
 
                 if (!(currentTrades.Count == 0))
@@ -174,6 +177,11 @@ namespace PokerSessionLibrary
             }
 
             Table.Muck(trades);
+        }
+
+        private static bool IsHumanPlayer(IPlayer player)
+        {
+            return player.GetType() == typeof(Player);
         }
 
         /// <summary>
@@ -190,8 +198,11 @@ namespace PokerSessionLibrary
             string winningHand = winner.Hand.Rank.GetLowerCaseString();
             winner.Wins++;
 
-            Console.WriteLine(
-                $"Dealer: {winner} wins with a {winningHand}, and is awarded {DistributePot(winner):C2}\n");
+            if (IsHumanPlayer(winner))
+                Console.WriteLine($"Dealer: You win with a {winningHand}, and are awarded {DistributePot(winner):C2}\n");
+            else
+                Console.WriteLine($"Dealer: {winner} wins with a {winningHand}, and is awarded {DistributePot(winner):C2}\n");
+
         }
 
         /// <summary>

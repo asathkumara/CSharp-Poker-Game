@@ -117,12 +117,8 @@ namespace PokerSessionLibrary
         {
             List<Card> discards = new List<Card>();
             Card discarded;
-            
-            RevealHand();
-            Console.WriteLine(
-                $"\n{this.Name}, enter the positions of the cards you wish to discard (1 - 5):"
-                );
 
+            RevealHand();
             int[] discardIndices = GetDiscardIndices();
 
             for (int i = 0; i < discardIndices.Length; i++)

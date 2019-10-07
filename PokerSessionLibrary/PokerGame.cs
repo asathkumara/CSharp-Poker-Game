@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PokerSessionLibrary
@@ -41,7 +42,7 @@ namespace PokerSessionLibrary
                 Table.Dealer.AnnounceShowdown();
 
                 Console.WriteLine($"You have {humanPlayer.Stack:C2} left");
-                Console.Write("Would you like to play another hand? (Y/N): ");
+                Console.Write("Play another hand? (Y/N): ");
 
                 if (Console.ReadLine().Equals("N", StringComparison.CurrentCultureIgnoreCase))
                     break;
@@ -60,7 +61,25 @@ namespace PokerSessionLibrary
         {
             Console.Clear();
             ShowStatistics();
-            Console.WriteLine("Thank you for playing...");
+            Console.WriteLine("Play again? (Y/N)");
+
+            if (Console.ReadLine().Equals("N", StringComparison.CurrentCultureIgnoreCase))
+            {
+                Console.Clear();
+                Console.WriteLine("Thank you for playing...");
+                Thread.Sleep(1000);
+                Environment.Exit(0);
+            }
+
+            else
+            {
+                Console.Clear();
+                House.DisplayHouseRules();
+                Start();
+            }
+                
+            
+
         }
 
         /// <summary>

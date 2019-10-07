@@ -16,6 +16,7 @@ namespace CardGameConsole
     {   
         static void Main(string[] args)
         {
+            Console.Title = "C# Poker Game v3";
             House.DisplayHouseRules();
 
             IDealer dealer = DealerFactory.CreateDealer();
