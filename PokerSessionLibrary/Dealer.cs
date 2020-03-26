@@ -13,9 +13,9 @@ namespace PokerSessionLibrary
     /// </summary>
     public class Dealer : IDealer
     {
-        Deck deck;
-        int topCardIndex;
-        static Random random = new Random();
+        Deck _deck;
+        int _topCardIndex;
+        static Random _random = new Random();
 
         /// <summary>
         /// The dealer's table.
@@ -27,8 +27,8 @@ namespace PokerSessionLibrary
         /// </summary>
         public Dealer()
         {
-            deck = new Deck();
-            topCardIndex = deck.Size - 1;
+            _deck = new Deck();
+            _topCardIndex = _deck.Size - 1;
         }
 
         /// <summary>
@@ -36,11 +36,11 @@ namespace PokerSessionLibrary
         /// </summary>
         public void Setup()
         {
-            Console.WriteLine("Dealer: Setting up...\n");
+            GraphicsHelper.TypeLine("Dealer: Setting up...\n");
             Table.Setup();
-            topCardIndex = deck.Size - 1;
+            _topCardIndex = _deck.Size - 1;
             ShuffleDeck();
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
         }
 
         /// <summary>
@@ -49,12 +49,12 @@ namespace PokerSessionLibrary
         /// <remarks>Employs Fisher-Yates shuffle.</remarks>
         private void ShuffleDeck()
         {
-            for (int i = deck.Size - 1; i > 0; i--)
+            for (int i = _deck.Size - 1; i > 0; i--)
             {
-                int secondCardIndex = random.Next(0, 52);
-                Card temp = deck[i];
-                deck[i] = deck[secondCardIndex];
-                deck[secondCardIndex] = temp;
+                int secondCardIndex = _random.Next(0, 52);
+                Card temp = _deck[i];
+                _deck[i] = _deck[secondCardIndex];
+                _deck[secondCardIndex] = temp;
             }
         }
 
@@ -63,7 +63,7 @@ namespace PokerSessionLibrary
         /// </summary>
         private void BurnCard()
         {
-            Table.Muck(deck[topCardIndex--]);
+            Table.Muck(_deck[_topCardIndex--]);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace PokerSessionLibrary
         /// <returns>The top card from the deck.</returns>
         public Card DealCard()
         {
-            return deck[topCardIndex--];
+            return _deck[_topCardIndex--];
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace PokerSessionLibrary
         /// </summary>
         public void CollectAnte()
         {
-            Console.WriteLine("Dealer: Please ante up...\n");
+            GraphicsHelper.TypeLine("Dealer: Please ante up...\n");
             decimal totalAntes = 0;
             Thread.Sleep(3000);
 
@@ -88,12 +88,10 @@ namespace PokerSessionLibrary
             {
                 decimal currentAnte = player.Ante();
                 totalAntes += currentAnte;
-                Console.WriteLine($"Dealer: {player} anteed {currentAnte:C2}.");
-                Thread.Sleep(2000);
+                GraphicsHelper.TypeLine($"Dealer: {player} anteed {currentAnte:C2}.");
             }
 
             IncreasePot(totalAntes);
-            Thread.Sleep(3000);
 
         }
 
@@ -102,20 +100,19 @@ namespace PokerSessionLibrary
         /// </summary>
         public void CollectBets()
         {
-            Console.WriteLine("Dealer: Place your bets...\n");
+            GraphicsHelper.TypeLine("Dealer: Place your bets...\n");
+
             decimal totalBets = 0;
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             foreach (IPlayer player in Table)
             {
                 decimal currentBet = player.Bet();
                 totalBets += currentBet;
-                Console.WriteLine($"Dealer: {player} bet {currentBet:C2}.");
-                Thread.Sleep(2000);
+                GraphicsHelper.TypeLine($"Dealer: {player} bet {currentBet:C2}.");
             }
 
             IncreasePot(totalBets);
-            Thread.Sleep(2000);
         }
 
         /// <summary>
@@ -125,7 +122,7 @@ namespace PokerSessionLibrary
         private void IncreasePot(decimal amount)
         {
             Table.IncreasePot(amount);
-            Console.WriteLine($"\nDealer: The pot is currently {Table.Pot:C2}.\n");
+            GraphicsHelper.TypeLine($"\nDealer: The pot is currently {Table.Pot:C2}.\n");
         }
 
         /// <summary>
@@ -134,8 +131,8 @@ namespace PokerSessionLibrary
         /// <remarks>A card is dealt to one player at a time until each player has a full hand.</remarks>
         public void DealHands()
         {
-            Console.WriteLine("Dealer: Dealing cards....\n");
-            
+            GraphicsHelper.TypeLine("Dealer: Dealing cards....\n");
+
             int currentHandIndex = 0;
             int maxHandIndex = House.MaxHandSize - 1;
             BurnCard();
@@ -148,7 +145,7 @@ namespace PokerSessionLibrary
                 currentHandIndex++;
             }
 
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
 
         }
 
@@ -157,23 +154,23 @@ namespace PokerSessionLibrary
         /// </summary>
         public void CollectTrades()
         {
-            Console.WriteLine("Dealer: Trade in your cards....\n");
-            Thread.Sleep(3000);
+            GraphicsHelper.TypeLine("Dealer: Trade in your cards....\n");
+
+            Thread.Sleep(2000);
 
             List<Card> trades = new List<Card>();
 
             foreach (IPlayer player in Table)
             {
                 if (IsHumanPlayer(player))
-                    Console.WriteLine("Dealer: Please enter the positions of the cards you wish to discard (1 - 5):\n");
+                    GraphicsHelper.TypeLine("Dealer: Please enter the positions of the cards you wish to discard (1 - 5):\n");
 
                 List<Card> currentTrades = player.Discard();
 
                 if (!(currentTrades.Count == 0))
                     trades.AddRange(currentTrades);
 
-                Console.WriteLine($"Dealer: {player} traded in {currentTrades.Count} card(s).\n");
-                Thread.Sleep(2000);
+                GraphicsHelper.TypeLine($"Dealer: {player} traded in {currentTrades.Count} card(s).\n");
             }
 
             Table.Muck(trades);
@@ -189,9 +186,7 @@ namespace PokerSessionLibrary
         /// </summary>
         public void AnnounceShowdown()
         {
-            Console.WriteLine("Dealer: It's time to showdown...\n");
-            Thread.Sleep(3000);
-
+            GraphicsHelper.TypeLine("Dealer: It's time to showdown...\n");
             Showdown();
 
             IPlayer winner = CompareHands();
@@ -199,9 +194,10 @@ namespace PokerSessionLibrary
             winner.Wins++;
 
             if (IsHumanPlayer(winner))
-                Console.WriteLine($"Dealer: You win with a {winningHand}, and are awarded {DistributePot(winner):C2}\n");
+                GraphicsHelper.TypeLine($"Dealer: You win with a {winningHand}, and are awarded {DistributePot(winner):C2}\n");
+
             else
-                Console.WriteLine($"Dealer: {winner} wins with a {winningHand}, and is awarded {DistributePot(winner):C2}\n");
+                GraphicsHelper.TypeLine($"Dealer: {winner} wins with a {winningHand}, and is awarded {DistributePot(winner):C2}\n");
 
         }
 

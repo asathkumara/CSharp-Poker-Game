@@ -48,7 +48,7 @@ namespace PokerSessionLibrary
             Console.WriteLine($"{Name}'s hand");
             Hand.Sort();
             Hand.Display();
-            House.ResetConsoleColor();
+            GraphicsHelper.ResetConsoleColor();
 
         }
 

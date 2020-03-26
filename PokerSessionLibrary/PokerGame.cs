@@ -42,9 +42,10 @@ namespace PokerSessionLibrary
                 Table.Dealer.AnnounceShowdown();
 
                 Console.WriteLine($"You have {humanPlayer.Stack:C2} left");
-                Console.Write("Play another hand? (Y/N): ");
+                Console.WriteLine("[Y] Player another hand.");
+                Console.WriteLine("[N] Cash out.");
 
-                if (Console.ReadLine().Equals("N", StringComparison.CurrentCultureIgnoreCase))
+                if (Console.ReadKey(true).Key.Equals(ConsoleKey.N))
                     break;
 
                 else
@@ -61,23 +62,16 @@ namespace PokerSessionLibrary
         {
             Console.Clear();
             ShowStatistics();
-            Console.WriteLine("Play again? (Y/N)");
+            Console.WriteLine("[ESC] Return to main menu.");
 
-            if (Console.ReadLine().Equals("N", StringComparison.CurrentCultureIgnoreCase))
+            while (true)
             {
-                Console.Clear();
-                Console.WriteLine("Thank you for playing...");
-                Thread.Sleep(1000);
-                Environment.Exit(0);
+                if (Console.KeyAvailable)
+                {
+                    if (Console.ReadKey(true).Key.Equals(ConsoleKey.Escape))
+                        return;
+                }
             }
-
-            else
-            {
-                Console.Clear();
-                House.DisplayHouseRules();
-                Start();
-            }
-                
             
 
         }
