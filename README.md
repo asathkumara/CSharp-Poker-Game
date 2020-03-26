@@ -1,6 +1,6 @@
 # CSharp-Poker-Game ![image](https://img.shields.io/badge/build-passing-green.svg)
 ![image](https://user-images.githubusercontent.com/28933557/77608368-3cc9b780-6eda-11ea-8aa2-077765c5927d.png)
-This poker game started out as a final project for my object-oriented programming course. I improved the original project by refactoring the structure and the logic; and by incorporating C# constructs such as LINQ, and some unit tests. 
+This poker game started out as a final project for my object-oriented programming course. The original project (see class diagram below) did not follow SOLID principles so I refactored the structure to better follow said principles. I also incorporated some unit testing into my project. 
 
 I'm still working on additional refactorings.
 
