@@ -163,7 +163,10 @@ namespace PokerSessionLibrary
             foreach (IPlayer player in Table)
             {
                 if (IsHumanPlayer(player))
+                {
+                    Console.CursorVisible = true;
                     GraphicsHelper.TypeLine("Dealer: Please enter the positions of the cards you wish to discard (1 - 5):\n");
+                }
 
                 List<Card> currentTrades = player.Discard();
 
@@ -173,6 +176,7 @@ namespace PokerSessionLibrary
                 GraphicsHelper.TypeLine($"Dealer: {player} traded in {currentTrades.Count} card(s).\n");
             }
 
+            Console.CursorVisible = false;
             Table.Muck(trades);
         }
 

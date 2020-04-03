@@ -1,6 +1,6 @@
 ﻿/************************
  Author: Asel S.
- Version: 4.0
+ Version: 4.5
  ************************/
 
 using System;
@@ -18,9 +18,9 @@ namespace CardGameConsole
         static void Main(string[] args)
         {
             Console.SetWindowSize(120, 25);
-            Console.Title = "C# Poker Game v4";
+            Console.Title = "C# Poker Game v4.5";
             MainMenu mainMenu = new MainMenu();
-            mainMenu.Launch();
+            mainMenu.Open();
 
             Console.ReadLine();
         } 

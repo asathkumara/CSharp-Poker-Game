@@ -66,11 +66,13 @@ namespace CardGameConsole.Properties {
         ///
         ///
         ///
+        ///					 Thank you for playing!
+        ///				---------------------------------------
+        ///
+        ///					  Developed by Asel S.
         ///
         ///
-        ///
-        ///
-        ///				Thank you for playing!.
+        ///.
         /// </summary>
         internal static string ExitMenuContent {
             get {
@@ -97,22 +99,71 @@ namespace CardGameConsole.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tutorial
-        ///-----------------------
-        ///This game is a simplified variant of the classic five card stud.
+        ///   Looks up a localized string similar to 
         ///
-        ///At the start of the round, each player is dealt five cards after they have anteed $1 and are alotted $100.
-        ///
-        ///During the betting round(s), each player bets $1 and all bets will be added to the pot. 
-        ///
-        ///After the betting round, each player has the chance to trade in up to 3 cards. When prompted to do so by the dealer,
-        ///enter the positions of the cards (1 - 5) you wish to discard separated by a space.
-        ///
-        ///The [rest of string was truncated]&quot;;.
+        ///			╔════════════════════════════════════════════════════════════════╗
+        ///			║                         Betting Rounds                         ║
+        ///			║                     ----------------------                     ║
+        ///			║  There are two betting rounds.                                 ║
+        ///			║                                                                ║
+        ///			║  The first betting round starts after each player has anteed   ║
+        ///			║  up. After the first betting round, each player has the chance ║
+        ///			║  to mu [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string TutorialMenuContent {
+        internal static string TutorialBettingContent {
             get {
-                return ResourceManager.GetString("TutorialMenuContent", resourceCulture);
+                return ResourceManager.GetString("TutorialBettingContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///	
+        ///			╔════════════════════════════════════════════════════════════════╗
+        ///			║                          Poker Hands                           ║
+        ///			║                     ----------------------                     ║
+        ///			║  The following poker hands are listed in order of most value:  ║           
+        ///			║   Royal Flush - Ace, King, Queen, Jack, 10, all the same suit  ║
+        ///			║   Straight Flush - Five cards in a sequence, all the same suit ║
+        ///			║   Four of a kind - All four cards of the same rank.            ║        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TutorialHandsContent {
+            get {
+                return ResourceManager.GetString("TutorialHandsContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///                        ╔════════════════════════════════════════════════════════════════╗
+        ///                        ║                          Introduction                          ║
+        ///                        ║                     ----------------------                     ║
+        ///                        ║  This game is a simplified variant of five card draw.          ║          
+        ///                        ║                                                                ║
+        ///                        ║  Each player [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TutorialIntroductionContent {
+            get {
+                return ResourceManager.GetString("TutorialIntroductionContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///			╔════════════════════════════════════════════════════════════════╗
+        ///			║                           Showdown                             ║
+        ///			║                     ----------------------                     ║
+        ///			║  During showdown, players left in the game reveal and compare  ║    
+        ///			║  their hands to determine a winner.                            ║
+        ///			║                                                                ║
+        ///			║  The player with the most valuable poker hand takes the pot    ║
+        ///			║  a [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TutorialShowdownContent {
+            get {
+                return ResourceManager.GetString("TutorialShowdownContent", resourceCulture);
             }
         }
     }

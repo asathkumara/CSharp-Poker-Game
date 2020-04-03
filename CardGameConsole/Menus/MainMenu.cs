@@ -20,7 +20,7 @@ namespace CardGameConsole.Menus
             _menuItems = new IMenuItem[] { new StartGameItem(48, 11), new TutorialItem(48, 13), new ExitGameItem(48, 15) };
         }
 
-        public void Launch()
+        public void Open()
         {
             Console.Clear();
             GraphicsHelper.SetConsoleColor();
@@ -30,7 +30,7 @@ namespace CardGameConsole.Menus
             Console.WriteLine(Resources.MainMenuContent);
 
             Console.CursorTop = _menuItems[currentMenuIndex].Y;
-            DrawSelector(_menuItems[currentMenuIndex].X);
+            GraphicsHelper.DrawSelector(_menuItems[currentMenuIndex].X, 15);
 
             while (!optionSelected)
             {
@@ -39,25 +39,21 @@ namespace CardGameConsole.Menus
                     switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.UpArrow:
-                            EraseSelector(_menuItems[currentMenuIndex].X);
+                            GraphicsHelper.EraseSelector(_menuItems[currentMenuIndex].X, 15);
                             currentMenuIndex--;
 
                             if (currentMenuIndex < 0)
-                                currentMenuIndex = 2;
+                                currentMenuIndex = _menuItems.Length - 1;
 
-                            Console.CursorTop = _menuItems[currentMenuIndex].Y;
-                            DrawSelector(_menuItems[currentMenuIndex].X);
                             break;
 
                         case ConsoleKey.DownArrow:
-                            EraseSelector(_menuItems[currentMenuIndex].X);
+                            GraphicsHelper.EraseSelector(_menuItems[currentMenuIndex].X, 15);
                             currentMenuIndex++;
 
-                            if (currentMenuIndex > 2)
+                            if (currentMenuIndex > _menuItems.Length - 1)
                                 currentMenuIndex = 0;
 
-                            Console.CursorTop = _menuItems[currentMenuIndex].Y;
-                            DrawSelector(_menuItems[currentMenuIndex].X);
                             break;
 
                         case ConsoleKey.Spacebar:
@@ -66,35 +62,17 @@ namespace CardGameConsole.Menus
                             break;
 
                     }
+
+                    Console.CursorTop = _menuItems[currentMenuIndex].Y;
+                    GraphicsHelper.DrawSelector(_menuItems[currentMenuIndex].X, 15);
                 }
             }
 
             while (currentMenuIndex != -1)
             {
                 _menuItems[currentMenuIndex].Select();
-                Launch();
+                Open();
             }
         }
-
-        private void EraseSelector(int x)
-        {
-            Console.CursorLeft = x;
-            Console.Write(" ");
-
-            Console.CursorLeft = x + 15;
-            Console.Write(" ");
-        }
-
-        private void DrawSelector(int x)
-        {
-            Console.CursorLeft = x;
-            Console.Write(">");
-
-            Console.CursorLeft = x + 15;
-            Console.Write("<");
-
-        }
-
-        
     }
 }

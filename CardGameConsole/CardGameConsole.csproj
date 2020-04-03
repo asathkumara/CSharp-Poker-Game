@@ -121,10 +121,11 @@
     <None Include="Resources\MainMenuContent.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TutorialMenuContent.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="poker-cards.ico" />
+    <None Include="Resources\TutorialShowdownContent.txt" />
+    <None Include="Resources\TutorialIntroductionContent.txt" />
+    <None Include="Resources\TutorialHandsContent.txt" />
+    <None Include="Resources\TutorialBettingContent.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

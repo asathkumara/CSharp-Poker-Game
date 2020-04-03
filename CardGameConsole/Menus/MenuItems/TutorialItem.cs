@@ -19,7 +19,7 @@ namespace CardGameConsole.Menus.MenuItems
 
         public void Select()
         {
-            new TutorialMenu().Launch();
+            new TutorialMenu().Open();
         }
     }
 }

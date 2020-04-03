@@ -124,7 +124,16 @@
   <data name="MainMenuContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MainMenuContent.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="TutorialMenuContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TutorialMenuContent.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="TutorialBettingContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TutorialBettingContent.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TutorialHandsContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TutorialHandsContent.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TutorialIntroductionContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TutorialIntroductionContent.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TutorialShowdownContent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TutorialShowdownContent.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

@@ -34,6 +34,35 @@ namespace PokerSessionLibrary
         }
 
         /// <summary>
+        /// Erases the selector on the given x console coordinates.
+        /// </summary>
+        /// <param name="x">The x coordinate on the console.</param>
+        /// <param name="dx">The offset for the x coordinate.</param>
+        public static void EraseSelector(int x, int dx)
+        {
+            Console.CursorLeft = x;
+            Console.Write(" ");
+
+            Console.CursorLeft = x + dx;
+            Console.Write(" ");
+        }
+
+        /// <summary>
+        /// Draws the selector on the given x console coordinates.
+        /// </summary>
+        /// <param name="x">The x coordinate on the console.</param>
+        /// <param name="dx">The offset for the x coordinate.</param>
+        public static void DrawSelector(int x, int dx)
+        {
+            Console.CursorLeft = x;
+            Console.Write(">");
+
+            Console.CursorLeft = x + dx;
+            Console.Write("<");
+
+        }
+
+        /// <summary>
         /// Types the given line. 
         /// </summary>
         /// <param name="value">The string value to be typed.</param>
