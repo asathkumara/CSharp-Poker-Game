@@ -1,5 +1,6 @@
 # CSharp-Poker-Game ![image](https://img.shields.io/badge/build-passing-green.svg)
 ![image](https://user-images.githubusercontent.com/28933557/78338113-04b01d80-7547-11ea-8513-eebce153cb58.png)
+
 This poker game started out as a final project for my object-oriented programming course. The original project (see class diagram below) did not follow SOLID principles so I refactored the structure to better follow said principles. I also incorporated some unit testing into my project. 
 
 I'm still working on additional refactorings.
