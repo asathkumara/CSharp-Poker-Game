@@ -10,36 +10,29 @@ namespace CardLibrary
     public class Hand : IComparable<Hand>, IEnumerable<Card>, IEquatable<Hand>
     {
         private const int MaxHandSize = 5;
-        private Card[] hand;
+        private Card[] _hand;
 
         /// <summary>
         /// The size of the hand.
         /// </summary>
-        public int Size { get { return hand.Length; } }
+        public int Size => _hand.Length;
 
         /// <summary>
         /// The rank of the hand.
         /// </summary>
-        public PokerHand Rank
-        {
-            get { return PokerHandEvaluator.EvaluatePokerHand(hand); }
-        }
+        public PokerHand Rank => PokerHandEvaluator.EvaluatePokerHand(_hand);
 
         /// <summary>
         /// The hand's high card.
         /// </summary>
-        public Card HighCard
-        {
-            get { return hand[4]; }
-            set { hand[4] = value; }
-        }
+        public Card HighCard => _hand[_hand.Length - 1];
 
         /// <summary>
         /// Constructs a hand of maximum size.
         /// </summary>
         public Hand()
         {
-            hand = new Card[MaxHandSize];
+            _hand = new Card[MaxHandSize];
         }
 
         /// <summary>
@@ -48,25 +41,25 @@ namespace CardLibrary
         /// <param name="cards">The cards to be placed in the hand.</param>
         public Hand(Card[] cards) : this()
         {
-            for (int i = 0; i < hand.Length; i++)
-                hand[i] = cards[i];
+            for (int i = 0; i < _hand.Length; i++)
+                _hand[i] = cards[i];
         }
 
         public Card this[int index]
         {
             get
             {
-                if (index < 0 || index > hand.Length - 1)
+                if (index < 0 || index > _hand.Length - 1)
                     throw new IndexOutOfRangeException("Index out of range");
 
-                return hand[index];
+                return _hand[index];
             }
             set
             {
-                if (index < 0 || index > hand.Length - 1)
+                if (index < 0 || index > _hand.Length - 1)
                     throw new IndexOutOfRangeException("Index out of range");
 
-                hand[index] = value;
+                _hand[index] = value;
             }
         }
 
@@ -75,7 +68,7 @@ namespace CardLibrary
         /// </summary>
         public void Display()
         {
-            foreach (Card card in hand)
+            foreach (Card card in _hand)
                 card.Display();
         }
 
@@ -84,7 +77,7 @@ namespace CardLibrary
         /// </summary>
         public void Sort()
         {
-            hand = hand.OrderBy(card => (int)card.Rank).ToArray();
+            _hand = _hand.OrderBy(card => (int)card.Rank).ToArray();
         }
 
         /// <summary>
@@ -147,7 +140,7 @@ namespace CardLibrary
         /// <returns>An enumerator that iterates through the hand.</returns>
         public IEnumerator<Card> GetEnumerator()
         {
-            return ((IEnumerable<Card>)hand).GetEnumerator();
+            return ((IEnumerable<Card>)_hand).GetEnumerator();
         }
 
         // <summary>
@@ -156,7 +149,7 @@ namespace CardLibrary
         /// <returns>An enumerator that iterates through the hand.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<Card>)hand).GetEnumerator();
+            return ((IEnumerable<Card>)_hand).GetEnumerator();
         }
 
     }

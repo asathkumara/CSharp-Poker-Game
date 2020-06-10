@@ -10,7 +10,7 @@ namespace CardLibrary
     /// Evaluates the value and rarity of the hand. 
     /// </summary>
     /// <remarks>
-    /// The code for most of these hand validations was inspired by their Java equivalents at http://www.mathcs.emory.edu/~cheung/Courses/170/Syllabus/10/pokerCheck.html 
+    /// The code for most of these hand validations was inspired by their Java equivalents at https://web.archive.org/web/20191113210242/http://www.mathcs.emory.edu/~cheung/Courses/170/Syllabus/10/pokerCheck.html
     /// </remarks>
     public class PokerHandEvaluator
     {

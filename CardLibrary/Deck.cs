@@ -14,9 +14,9 @@ namespace CardLibrary
     {
         private const int MaxDeckSize = 52;
         
-        private Card[] deck;
+        private Card[] _deck;
 
-        public int Size { get { return deck.Length; } }
+        public int Size => _deck.Length;
 
         /// <summary>
         /// Constructs a deck of 52 playing cards.
@@ -25,24 +25,24 @@ namespace CardLibrary
         /// the argument is not a valid index.</exception>
         public Deck()
         {
-            deck = GetDeck();
+            _deck = GetDeck();
         }
         
         public Card this[int index]
         {
             get
             {
-                if (index < 0 || index > deck.Length - 1)
+                if (index < 0 || index > _deck.Length - 1)
                     throw new IndexOutOfRangeException("Index is out of range.");
 
-                return deck[index];
+                return _deck[index];
             }
             set
             {
-                if (index < 0 || index > deck.Length - 1)
+                if (index < 0 || index > _deck.Length - 1)
                     throw new IndexOutOfRangeException("Index is out of range.");
 
-                deck[index] = value;
+                _deck[index] = value;
             }
         }
 
@@ -70,7 +70,7 @@ namespace CardLibrary
         /// <returns>Returns a readable string of the cards in the deck that are not inplay.</returns>
         public override string ToString()
         {
-            return $"[{String.Join<Card>(", ", deck)}]";
+            return $"[{String.Join<Card>(", ", _deck)}]";
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace CardLibrary
         /// <returns>An enumerator that iterates through the deck.</returns>
         public IEnumerator<Card> GetEnumerator()
         {
-            return ((IEnumerable<Card>)deck).GetEnumerator();
+            return ((IEnumerable<Card>)_deck).GetEnumerator();
         }
 
         // <summary>
@@ -88,7 +88,7 @@ namespace CardLibrary
         /// <returns>An enumerator that iterates through the deck.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<Card>)deck).GetEnumerator();
+            return ((IEnumerable<Card>)_deck).GetEnumerator();
         }
 
     } 

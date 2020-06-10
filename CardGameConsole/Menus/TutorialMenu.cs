@@ -12,7 +12,7 @@ namespace CardGameConsole.Menus
     public class TutorialMenu
     {
         string[] _pages;
-        int currentPageIndex;
+        int _currentPageIndex;
 
         public TutorialMenu()
         {
@@ -24,7 +24,7 @@ namespace CardGameConsole.Menus
                 Resources.TutorialHandsContent
             };
 
-            currentPageIndex = 0;
+            _currentPageIndex = 0;
         }
 
         public void Open()
@@ -32,7 +32,7 @@ namespace CardGameConsole.Menus
             Console.Clear();
             GraphicsHelper.SetConsoleColor();
 
-            Console.WriteLine(_pages[currentPageIndex]);
+            Console.WriteLine(_pages[_currentPageIndex]);
 
             while (true)
             {
@@ -41,21 +41,21 @@ namespace CardGameConsole.Menus
                     switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.LeftArrow:
-                            if (currentPageIndex == 0)
+                            if (_currentPageIndex == 0)
                                 return;
 
-                            currentPageIndex--;
+                            _currentPageIndex--;
                             Console.Clear();
-                            Console.WriteLine(_pages[currentPageIndex]);
+                            Console.WriteLine(_pages[_currentPageIndex]);
                             break;
 
                         case ConsoleKey.RightArrow:
-                            if (currentPageIndex == _pages.Length - 1)
+                            if (_currentPageIndex == _pages.Length - 1)
                                 continue;
 
-                            currentPageIndex++;
+                            _currentPageIndex++;
                             Console.Clear();
-                            Console.WriteLine(_pages[currentPageIndex]);
+                            Console.WriteLine(_pages[_currentPageIndex]);
                             break;
 
                         case ConsoleKey.Escape:
