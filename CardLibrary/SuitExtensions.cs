@@ -17,13 +17,13 @@ namespace CardLibrary
             switch (suit)
             {
                 case Suit.Club:
-                    return "♣";
+                    return "\u2663";
                 case Suit.Diamond:
-                    return "♦";
+                    return "\u2666";
                 case Suit.Heart:
-                    return "♥";
+                    return "\u2665";
                 case Suit.Spade:
-                    return "♠";
+                    return "\u2660";
                 default:
                     throw new InvalidEnumArgumentException("Invalid enum");
             }
