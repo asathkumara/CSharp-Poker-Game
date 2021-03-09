@@ -10,10 +10,12 @@ This project started out as a final for my object-oriented programming course. T
 
 I'm currently exploring additional refactorings, if you have some ideas / feedback, I'd like to hear it.
 
-## Playing The Game 
+## Installation 
 ![image](https://user-images.githubusercontent.com/28933557/78338318-683a4b00-7547-11ea-821e-b3f22c005716.png)
 
 To play the game you need to [download](https://github.com/asathkumara/CSharp-Poker-Game/releases/download/v4.5/CSharp-Poker-Game-v4.5.zip) the current release, extract it and run the setup.exe file. You may get a false positive for the `.exe` but that is to be expected since it isn't digitally signed.
+
+Also the game requires that you use the `legacy console` for the suit icons to display properly. 
 
 ## License
 The project is licensed under [MIT](https://github.com/asathkumara/CSharp-Poker-Game/blob/master/LICENSE). Feel free to re-use any libraries and code but do your due diligence with attributing credit.
